@@ -28,81 +28,178 @@
 \tableofcontents
 \end{frame}
 
-\begin{frame}
-	\frametitle{Fifth-order KdV Equation}
-	\begin{description}
-		\item<1->
-		$u_t = \beta u_{xxxxx} + \alpha u_{xxx} + \frac{\partial}{\partial x}f(u, u_x, u_{xx})$
-		\item<2->
-		Applications
-		\begin{itemize}
-			\item Capillary gravity water waves
-			\item Plasma waves
-		\end{itemize}
-
-		\end{description}
-\end{frame}
+\section{Background}
 
 \begin{frame}
 	\frametitle{Fifth-order KdV Equation }   
-	\fontsize{20}{7.2}\selectfont
+	\fontsize{18}{7.2}\selectfont
 	\begin{center}
-	\[ u_t = u_{xxxxx} - u_{xxx} + u u_x \]
+		\[ u_t = u_{xxxxx} - u_{xxx} + u u_x \]
 	\end{center}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Fifth-order KdV Equation}
-	$u_t = \underbrace{u_{xxxxx} - u_{xxx}}_{\text{dispersive terms}} + \underbrace{u u_x}_{\text{nonlinear advection}}$
+	\fontsize{18}{7.2}\selectfont
+	\begin{description}
+		\item<1->
+			\begin{center}
+			\[ u_t = \underbrace{u_{xxxxx} - u_{xxx}}_{\text{dispersive terms}} + \underbrace{u u_x}_{\text{nonlinear advection}} \]
+			\end{center}
+		\vspace{0.5cm}
+		\item<2->
+
+		Application
+		\begin{itemize}
+			\item Capillary gravity water waves
+			\item Plasma waves
+			\item Laser optics
+		\end{itemize}
+	\end{description}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Fifth-order KdV Equation}
+	\frametitle{Traveling wave solutions}
+	\fontsize{18}{7.2}\selectfont
 	\begin{itemize}
-		\item<1-> Look for traveling wave solutions: $u(x, t) = u(x - ct, t)$
-		\item<2-> $u_t = u_{xxxxx} - u_{xxx} - c u_x + u u_x$
-		\item<3-> For an equilibrium solution, $u_t = 0$
-		\item<4-> Equilibrium solution satisfies the 5th order ODE $u_{xxxxx} - u_{xxx} - c u_x + u u_x = 0$
+		\item<1-> Ansatz: $u(x, t) = u(x - ct, t) $
+
+		\vspace{0.5cm}
+		\item<2-> Equation becomes
+		\begin{center}
+		\[ u_t = u_{xxxxx} - u_{xxx} - c u_x + u u_x \]
+		\end{center}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Equilibrium ODE for KdV5}
+	\frametitle{Equilibrium solutions}
+	\fontsize{18}{7.2}\selectfont
 	\begin{itemize}
-		\item<1->We want solutions $u(x)$ which decay to 0 at $\pm \infty$
-		\item<2->Integrate once to get 4th order ODE $u_{xxxx} - u_{xx} - cu + u^2 = 0$
+		\item<1-> For an equilibrium solution, $u_t = 0$
+
+		\vspace{0.5cm}
+		\item<2-> Equilibrium solution satisfies 5th order ODE 
+		\begin{center}
+		\[ u_{xxxxx} - u_{xxx} - c u_x + u u_x = 0 \]
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Equilibrium ODE}
+	\fontsize{18}{7.2}\selectfont
+	\begin{itemize}
+		\item<1->Seek solutions which decay to 0 at $\pm \infty$
+		\vspace{0.5cm}
+		\item<2->Integrate once to get 4th order ODE 
+		\begin{center}
+		\[u_{xxxx} - u_{xx} - cu + u^2 = 0\]
+		\end{center}
+		\vspace{0.5cm}
 		\item<3->At least one solution: $u(x) = 0$
 	\end{itemize} 
 \end{frame}
 
 \begin{frame}
 	\frametitle{The Zero Solution}
+	\fontsize{16}{7.2}\selectfont
 	\begin{itemize}
-		\item<1->Linearization about the zero solution: $v_{xxxx} - v_{xx} - c v = 0$
-		\item<2->Eigenvalues are 
-		\[
-		\lambda = \pm \sqrt{ \frac{1 - \sqrt{1 - 4c } }{ 2} }
-		\] 
-		\item<3->Two have positive real part, two have negative real part
+		\item<1->Linearization about the zero solution
+		\begin{center}
+		\[v_{xxxx} - v_{xx} - c v = 0 \]
+		\end{center}
+		\item<2->Eigenvalues
+		\begin{center}
+		\[ \lambda = \pm \sqrt{ \frac{1 \pm \sqrt{1 - 4c } }{ 2} } \]
+		\end{center}
+		\item<3->Two positive real part, two negative real part
 		\item<4->2D stable manifold, 2D unstable manifold
-		\item<5->Q? Do we have a homoclinic orbit?
+		\item<5->Do we have a homoclinic orbit?
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
-	\frametitle{Homoclinic Orbit?}
+	\frametitle{Homoclinic orbit? Yes!}
+	\fontsize{16}{7.2}\selectfont
+	Exact solution for $c = \sqrt{6/13}$
+	\begin{center}
+	\[
+	u(x) = \frac{105}{338}\text{sech}^4\left( \frac{x}{2\sqrt{13}}\right) 
+	\]
+	\end{center}
+	\begin{figure}
+   		\includegraphics[width=0.5\textwidth]{images/exactsol}
+   		\hfill
+   		\includegraphics[width=0.5\textwidth]{images/exactsolorbit}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Single pulses}
+	\fontsize{16}{7.2}\selectfont
+	What about other values of $c$?
+
+	\vspace{1cm}
+
+	\begin{block}{Theorem \footnotesize [Chugunova and Pelinovsky, 2007]}
+	For $c>0$, a single-pulse solution $u(x)$ exists.
 	\begin{itemize}
-		\item<1->A. Yes!
-		\item<2->We have exact solution for $c = \sqrt{6/13}$
-		\[
-		u(x) = \frac{105}{338}\text{sech}^4\left( \frac{x}{2\sqrt{13}}\right) 
-		\]
-		\item<3->
+		\item $u(x)$ is smooth
+		\item $u(x)$ is an even function
+		\item $u(x)$ decays exponentially to 0 as $x \rightarrow \pm \infty$
+	\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Bifurcation}
+	\fontsize{16}{7.2}\selectfont
+	At $c = 1/4$, eigenvalues of linearization about zero-solution undergo a bifurcation
+	\includegraphics[width=0.8\textwidth]{images/eigbifurcation}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Bifurcation}
+	\fontsize{16}{7.2}\selectfont
+	\begin{itemize}
+		\item<1-> For $c > 1/4$, $\lambda = \pm \alpha \pm \beta i$
+		\vspace{0.5cm}
+		\item<2-> Tail oscillations
+		\begin{itemize}
+			\item Decay rate $\alpha$
+			\item Frequency $\beta$
+		\end{itemize}
+		\vspace{0.5cm}
+		\item<3-> Exponentially-scaled pulse
+		\includegraphics[width=0.5\textwidth]{images/singlepulsemag}
 	\end{itemize}
 \end{frame}
+
+\begin{frame}
+	\frametitle{Double Pulses}
+	\fontsize{16}{7.2}\selectfont
+	Suggests for $c>1/4$ we could construct a double pulse by joining two single pulses at the critical points of their tail oscillations.
+
+	\vspace{0.5cm}
+
+	\begin{block}{Theorem \footnotesize [Chugunova and Pelinovsky, 2007]}
+	For $c>1/4$, a countably infinite family of double pulses exist, indexed by $n \in \mathbb{N}$.
+	\begin{itemize}
+		\item Resemble two copies of single pulse solutions
+		\item Two pulses separated by small-amplitude oscillatory tails
+		\item Distance between two pulses approximately $c + n (\pi / 2 \beta)$, $c$ constant
+		\item Smooth, even, exponentially decay
+	\end{itemize}
+	\end{block}
+
+\end{frame}
+
+\section{Numerical Construction of Double Pulses}
 
 \begin{frame}
 	\frametitle{Discretization}
+	\fontsize{16}{7.2}\selectfont
 	\begin{itemize} 
 		\item Fourier spectral methods
 		\begin{itemize} 
@@ -114,12 +211,17 @@
 			\item Finite domain $[-L, L]$
 			\item Dirichlet/Neumann boundary conditions at each end
 		\end{itemize}
-		\item For both methods, $L = 25$ and we use $N = 256$ grid points
+		\item For both methods
+		\begin{itemize} 
+			\item $L = 25$ 
+			\item $N = 256$ grid points
+		\end{itemize}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Parameter Continuation}
+	\fontsize{14}{7.2}\selectfont
 	\begin{itemize}
 		\item Start with known solution $u_0(x)$ for $c = \sqrt{6/13}$
 		\item Increase $c$ by small increment
@@ -145,6 +247,7 @@
 
 \begin{frame}
 	\frametitle{Double Pulse Construction}
+	\fontsize{16}{7.2}\selectfont
 	1. Truncate
 	\begin{center}
 	\includegraphics[width=0.8\linewidth]{images/singlepulsemagtailcut}
@@ -154,6 +257,7 @@
 
 \begin{frame}
 	\frametitle{Double Pulse Construction}
+	\fontsize{16}{7.2}\selectfont
 	1. Truncate
 	\begin{center}
 	\includegraphics[width=0.8\linewidth]{images/single}
@@ -162,6 +266,7 @@
 
 \begin{frame}
 	\frametitle{Double Pulse Construction}
+	\fontsize{16}{7.2}\selectfont
 	1. Truncate
 	\begin{center}
 	\includegraphics[width=0.8\linewidth]{images/singlecut}
@@ -170,6 +275,7 @@
 
 \begin{frame}
 	\frametitle{Double Pulse Construction}
+	\fontsize{16}{7.2}\selectfont
 	2. Mirror
 	\begin{center}
 	\includegraphics[width=0.8\linewidth]{images/dp1before.eps}
@@ -178,24 +284,36 @@
 
 \begin{frame}
 	\frametitle{Double Pulse Construction}
+	\fontsize{16}{7.2}\selectfont
 	3. Solve (numerically)
 	\begin{center}
 	\includegraphics[width=0.8\linewidth]{images/dp1after.eps}
 	\end{center}
 \end{frame}
 
+\section{Numerical Computation of Spectra}
+
 \begin{frame}
 	\frametitle{Eigenvalues}
+	\fontsize{16}{7.2}\selectfont
 	\begin{itemize}
+		\item Linearize about double pulse solution $u^*$
+		\begin{center}
+		$L = \partial_x^5 - \partial_x^3 + (c - 2 u^*)\partial_x - 2 u^*_x $
+		\end{center}
 		\item Discretize eigenvalue problem $Lv = \lambda v$
+		\vspace{0.5cm}
 		\item Compute eigenvalues of matrix $L$ with Matlab's \texttt{eig} function
+		\vspace{0.5cm}
 		\item Similar results for Fourier and Chebyshev polynomial spectral methods
+		\vspace{0.5cm}
 		\item We will show results for Fourier spectral methods
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Eigenvalues, unstable double pulse}
+	\fontsize{16}{7.2}\selectfont
 	\begin{figure}
    		\includegraphics[width=0.5\textwidth]{images/unstabledoublepulse}
    		\hfill
@@ -205,6 +323,7 @@
 
 \begin{frame}
 	\frametitle{Eigenvalues, unstable double pulse}
+	\fontsize{16}{7.2}\selectfont
 	\begin{figure}
    		\includegraphics[width=0.5\textwidth]{images/unstabledoublepulse}
    		\hfill
@@ -214,7 +333,7 @@
 
 \begin{frame}
 	\frametitle{Eigenvalues, potentially stable double pulse}
-	Potentially stable double pulse
+	\fontsize{16}{7.2}\selectfont
 	\begin{figure}
    		\includegraphics[width=0.5\textwidth]{images/stabledoublepulse}
    		\hfill
@@ -224,7 +343,7 @@
 
 \begin{frame}
 	\frametitle{Eigenvalues, potentially stable double pulse}
-	Potentially stable double pulse
+	\fontsize{16}{7.2}\selectfont
 	\begin{figure}
    		\includegraphics[width=0.5\textwidth]{images/stabledoublepulse}
    		\hfill
@@ -234,6 +353,7 @@
 
 \begin{frame}
 	\frametitle{Eigenvalues, weighted space}
+	\fontsize{16}{7.2}\selectfont
 	\begin{figure}
    		\includegraphics[width=0.5\textwidth]{images/stableeigweighted1}
    		\hfill
@@ -243,7 +363,7 @@
 
 \begin{frame}
 	\frametitle{Eigenvalues, unweighted space}
-
+	\fontsize{16}{7.2}\selectfont
 	\begin{block}{Nonzero point spectrum (interaction eigenvalues)}
 		\[ \lambda = 2.0829 \times 10^{-11} \pm 0.0691i \]
 	\end{block}
@@ -251,6 +371,7 @@
 
 \begin{frame}
 	\frametitle{Eigenvalues, unweighted space}
+	\fontsize{16}{7.2}\selectfont
 	Is real part actually zero?
 	\begin{itemize}
 		\item<1->Real part of order $\times 10^{-11}$ suggests numerical error.
@@ -261,8 +382,11 @@
 	\end{itemize}
 \end{frame}
 
+\section{Time stepping}
+
 \begin{frame}
 	\frametitle{Time stepping}
+	\fontsize{16}{7.2}\selectfont
 	\begin{itemize}
 		\item<1->What really happens near the double-pulse equilibria?
 		\item<2->Time-stepping scheme:
@@ -276,6 +400,7 @@
 
 \begin{frame}
 	\frametitle{Time stepping, near unstable double pulse}
+	\fontsize{16}{7.2}\selectfont
 	\begin{center}
 		\includemedia[
 		     width=8cm,height=6cm,
@@ -291,6 +416,7 @@
 
 \begin{frame}
 	\frametitle{Time stepping, near potentially stable double pulse}
+	\fontsize{16}{7.2}\selectfont
 	\begin{center}
 		\includemedia[
 		     width=8cm,height=6cm,
@@ -306,6 +432,7 @@
 
 \begin{frame}
 	\frametitle{Phase portrait, near potentially stable double pulse}
+	\fontsize{16}{7.2}\selectfont
 	Plot distance between pulses vs. the derivative of this distance
 	\begin{center}
 	\includegraphics[width=0.6\linewidth]{images/phaseportrait1}
@@ -314,6 +441,7 @@
 
 \begin{frame}
 	\frametitle{Phase portrait}
+	\fontsize{16}{7.2}\selectfont
 	\begin{center}
 	\includegraphics[width=0.8\linewidth]{images/phaseportrait2}
 	\end{center}
@@ -321,11 +449,15 @@
 
 \begin{frame}
 	\frametitle{Future directions}
+	\fontsize{16}{7.2}\selectfont
 
 \end{frame}
 
 \begin{frame}
 	\frametitle{References}
+	\begin{enumerate}
+	\item Marina Chugunova and Dmitry Pelinovsky. \emph{Two-pulse solutions in the fifth-order KdV equation: Rigorous theory and numerical approximations} Discrete and Continuous Dynamical Systems, Series B 8.4 (2007), 773–800.
+	\end{enumerate}
 \end{frame}
  
 \end{document}
