@@ -12,12 +12,11 @@
 
 \usepackage{anyfontsize}
  
- 
 %Information to be included in the title page:
 \title[Stability of Double Pulses]{Stability of Double Pulse Solutions to the 5th order Korteweg–de Vries (KdV) Equation, a Numerical Approach}
 \author[R. Parker]{Ross Parker, Bj\"{o}rn Sandstede}
 \institute{Brown University}
-\date{2017}
+\date{30 November, 2017}
  
 \begin{document}
  
@@ -97,7 +96,7 @@
 		\[u_{xxxx} - u_{xx} - cu + u^2 = 0\]
 		\end{center}
 		\vspace{0.5cm}
-		\item<4->Hamiltonian, conserved quantity
+		\item<3->Hamiltonian, conserved quantity
 		\begin{center}
 		\[
 		H = u_x u_{xxx} - \frac{1}{2}u_x^2 - \frac{1}{2}u_{xx}^2 + \frac{c}{2}u^2 - \frac{1}{3}u^3
@@ -148,7 +147,7 @@
 
 	\vspace{1cm}
 
-	\begin{block}{Theorem \footnotesize [Chugunova and Pelinovsky, 2007]}
+	\begin{block}{Theorem \footnotesize [Groves (1998), Chugunova and Pelinovsky (2007)]}
 	For $c>0$, a single-pulse solution $u(x)$ exists.
 	\begin{itemize}
 		\item $u(x)$ is smooth
@@ -199,8 +198,8 @@
 	\frametitle{Double Pulses}
 	\fontsize{16}{7.2}\selectfont
 
-	\begin{block}{Theorem \footnotesize [Chugunova and Pelinovsky, 2007]}
-	For $c>1/4$, a countably infinite family of double pulses exist, indexed by $n \in \mathbb{N}$.
+	\begin{block}{Theorem \footnotesize [Buffoni and S\'er\'e (1998), Chugunova and Pelinovsky (2007)]}
+	For $c>1/4$, a countably infinite family of double pulses exists, indexed by $n \in \mathbb{N}$.
 	\begin{itemize}
 		\item Resemble two copies of single pulse solutions
 		\item Two pulses separated by small-amplitude oscillatory tails
@@ -310,7 +309,55 @@
 \section{Numerical Computation of Spectra}
 
 \begin{frame}
-	\frametitle{Eigenvalues}
+	\frametitle{Spectral stability}
+	\fontsize{16}{7.2}\selectfont
+	Look at spectrum of linearization of the PDE about the double pulse solutions.
+\end{frame}
+
+\begin{frame}
+	\frametitle{Spectrum of single pulse}
+	\fontsize{16}{7.2}\selectfont
+	For a single pulse solution $\phi$
+	\begin{itemize}
+		\item Essential spectrum is entire imaginary axis
+		\vspace{0.5cm}
+		\item Double eigenvalue at 0
+		\vspace{0.5cm}
+		\item Corresponding eigenfunctions are $\phi_x$ and $\phi_c$
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=1\linewidth]{images/eigsingle}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Spectrum of double pulse}
+	\fontsize{16}{7.2}\selectfont
+	For a double pulse solution $\phi$
+	\begin{itemize}
+		\item Essential spectrum is entire imaginary axis
+		\vspace{0.5cm}
+		\item Double eigenvalue at 0
+		\vspace{0.5cm}
+		\item Additional eigenvalue near 0 representing interaction between two pulses \footnotesize [Sandstede (1998) ]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Spectrum of double pulse}
+	\fontsize{16}{7.2}\selectfont
+	\begin{itemize}
+		\item By symmetry from Hamiltonian structure, if $\lambda$ is an eigenvalue, so are $-\lambda, \bar{\lambda}, and -\bar{\lambda}$
+		\vspace{0.5cm}
+		\item Three possibilities for eigenvalues
+		\begin{center}
+			\includegraphics[width=1\linewidth]{images/eigdouble}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{PDE Eigenvalues}
 	\fontsize{16}{7.2}\selectfont
 	\begin{itemize}
 		\item Linearize about double pulse solution $u^*$
@@ -466,17 +513,21 @@
 	\frametitle{Future directions}
 	\fontsize{16}{7.2}\selectfont
 	\begin{itemize}
-		\item ???
-		\item We think we can prove that the the eigenvalue of the potentially stable double pulse is pure imaginary to leading order?
-		\item Similar stuff for lattice equations?
+		\item For the unbounded case, prove that the eigenvalues of the potentially stable double pulse are pure imaginary to leading order
+		\item Prove spectral stability for the periodic case
+		\item Use the Krein matrix to prove spectral stability (has been unsuccessful to date)
+		\item Examine stability of multipulse solutions for lattice PDEs
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{References}
-	\fontsize{14}{7.2}\selectfont
+	\fontsize{12}{7.2}\selectfont
 	\begin{enumerate}
-	\item Marina Chugunova and Dmitry Pelinovsky. \emph{Two-pulse solutions in the fifth-order KdV equation: Rigorous theory and numerical approximations}. Discrete and Continuous Dynamical Systems, Series B 8.4 (2007), 773–800.
+		\item Buffoni B and S\'er\'e E. \emph{A global condition for quasi-random behaviour in a class of conser- vative systems}. Commun. Pure Appl. Math., 49 (1996), 285–305
+		\item Chugunova M and Pelinovsky P. \emph{Two-pulse solutions in the fifth-order KdV equation: Rigorous theory and numerical approximations}. Discrete and Continuous Dynamical Systems, Series B 8.4 (2007), 773–800.
+		\item Groves M D. \emph{Solitary-wave solutions to a class of fifth-order model equations}. Nonlinearity, 11 (1998), 341–353.
+		\item Sandstede B. \emph{Stability of multiple-pulse solutions}. Trans. Am. Math. Soc., 350 (1998), 429– 472.
 	\end{enumerate}
 \end{frame}
  
