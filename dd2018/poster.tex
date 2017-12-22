@@ -93,7 +93,7 @@
         }
       \end{alertblock}
 
-      \vskip2ex
+      \vskip1ex
 
       \begin{block}{Fifth-order KdV Equation}
         \rmfamily{
@@ -107,9 +107,11 @@
         }
       \end{block}
 
+      \vskip1ex
+
       \begin{block}{Traveling Wave Solutions}
         \rmfamily{
-          Using traveling wave ansatz $u(x, t) = u(x - ct, t)$
+          Traveling wave ansatz $u(x, t) = u(x - ct, t)$
             \[ u_t = u_{xxxxx} - u_{xxx} - c u_x + u u_x \]
           
           Equilibrium solution satisfies 5th order ODE 
@@ -126,14 +128,16 @@
         }
       \end{block}
 
-      \vskip2ex
+      \vskip1ex
 
       \begin{block}{Homoclinic Orbits}
         \rmfamily{
           Linearization about zero solution
             \[v_{xxxx} - v_{xx} - c v = 0 \]
           Eigenvalues of linearization
+          \vskip0.1ex
             \[ \lambda = \pm \sqrt{ \frac{1 \pm \sqrt{1 - 4c } }{ 2} } \]
+          \vskip0.5ex
           2D stable manifold, 2D unstable manifold\\
           \vskip2ex
           \textbf{Theorem.} \emph{For $c>0$, a homoclinic orbit (single pulse solution) $u(x)$ exists which is smooth, even, and decays exponentially to 0 as $x \rightarrow \pm \infty.$}
@@ -148,23 +152,50 @@
     \begin{column}{\onecolwid}
 
       \begin{block}{Bifurcation}
+      \rmfamily{
       At $c = 1/4$, eigenvalues of linearization about zero solution undergo a bifurcation.
         \begin{figure}
           \begin{center}
-            \includegraphics[width=0.8\textwidth]{images/eigbifurcation}
-            \caption{}
+            \includegraphics[width=0.7\textwidth]{images/eigbifurcation}
+            \caption{Eigenvalue bifurcation.}
             \label{fig:bifurcation}
           \end{center}
         \end{figure}
-        For $c > 1/4$, $\lambda = \pm \alpha \pm \beta i$. Single pulse solution has exponential decay rate $\alpha$, tail oscillations with frequency $\beta$.
-      \end{block} 
-        \begin{figure}
+        For $c > 1/4$, $\lambda = \pm \alpha \pm \beta i$. Single pulse solution has tail oscillations with frequency $\beta$.
+      \begin{figure}
           \begin{center}
-            \includegraphics[width=0.8\textwidth]{images/singlepulsemagright}
-            \caption{}
+            \includegraphics[width=0.7\textwidth]{images/singlepulsemagright.pdf}
+            \caption{Oscillatory tail of single pulse solution.}
             \label{fig:singlepulsemagright}
           \end{center}
         \end{figure}
+      }
+      \end{block} 
+
+      \vskip1ex
+
+      \begin{block}{Double Pulses}
+      \rmfamily{
+        Construct double pulse by joining single pulses at the critical points or zeros of tail oscillations.\\
+        \vskip2ex
+        \textbf{Theorem.} \emph{For $c>1/4$, a countably infinite family of double pulses exists, indexed by $n \in \mathbb{N}$. Double pulses resemble two copies of the single pulse separated by small-amplitude oscillatory tails. Distance between peaks is of order $n \pi / \beta.$
+        }
+      }
+      \end{block}
+
+      \vskip1ex
+
+       \begin{block}{Numerical Methods}
+        \rmfamily{
+          \begin{itemize}
+            \item Discretization schemes: Fourier and Chebyshev polynomial spectral methods
+            \item Start with known solution for $c = \sqrt{6/13}$
+            \item Parameter continuation in $c$ until $c > 1/4$
+            \item Join two single pulses end-to-end at critical point or zero of tail oscillations
+            \item Use Matlab's \texttt{fsolve} to solve 4th order ODE
+          \end{itemize}
+        }
+      \end{block} 
 
     \end{column}
 
@@ -173,60 +204,112 @@
 % third column
     \begin{column}{\onecolwid}
 
-      \begin{block}{Stuff}
+      \begin{block}{Double Pulse Construction}
         \rmfamily{
+          \begin{figure}
           \begin{center}
-            \[ u_t = u_{xxxxx} - u_{xxx} + u u_x \]
+            \includegraphics[width=0.7\textwidth]{images/doublepulses.eps}
+            \caption{Double pulses 2(2), 2(3), 2(4), and 2(5).}
+            \label{fig:doublepulses}
           \end{center}
-          Applications
-          \begin{itemize}
-            \item Capillary gravity water waves
-            \item Plasma waves
-            \item Laser optics
-          \end{itemize}
+          \end{figure}
         }
       \end{block} 
-  
+
+      \vskip1ex
+
+      \begin{block}{Eigenvalues of Double Pulses}
+        \rmfamily{
+            \begin{itemize}
+              \item Essential spectrum is entire imaginary axis
+              \item Double eigenvalue at 0, eigenfunctions $\phi_x$ and $\phi_c$
+              \item Additional eigenvalues near 0 from pulse interaction, Hamiltonian symmetry
+            \end{itemize}
+
+            \begin{figure}
+              \begin{center}
+              \includegraphics[width=0.8\textwidth]{images/eigdouble}
+              \caption{Three possibilities for eigenvalues near 0.}
+              \label{fig:eigcartoon}
+            \end{center}
+            \end{figure}
+
+          Numerical computation using Matlab's \texttt{eig}.
+          \begin{figure}
+          \begin{center}
+            \includegraphics[width=0.5\textwidth]{images/unstableeig.eps}
+            \includegraphics[width=0.5\textwidth]{images/stableeig.eps}
+            \caption{Eigenvalues of linearization about double pulse 2(2) (left) and 2(3) (right).}
+            \label{fig:numericaleig}
+          \end{center}
+          \end{figure}
+        }
+      \end{block} 
+
+      \vskip1ex
+
+      \begin{block}{Potentially Stable Double Pulses}
+        \rmfamily{
+          \begin{itemize}
+            \item To find eigenvalues, use exponentially weighted space to move essential spectrum to the left
+            \item For $c = 10$, we have a pair of eigenvalues at
+            \[
+            \lambda = 2.0829 \times 10^{-11} \pm 0.0691i
+            \]
+          \end{itemize}
+
+        }
+      \end{block} 
+
     \end{column}
 
   \begin{column}{\sepwid}\end{column}			% empty spacer column
 
   \begin{column}{\onecolwid}
-    \begin{block}{Conclusions and Outlook}
-      \rmfamily{This characterization provides a simple way to find all unitarily-correctable codes for unital channels and even some codes for non-unital channels. General correctable subsystems can be characterized in terms of algebras that are analogous to the multiplicative domain, though in general it is not clear how to calculate them -- further research in this area would be of great interest.}
-    \end{block}
-    \vskip2ex
-    \begin{block}{For Further Information}
-      \small{\rmfamily{For the details of our work:
-      \begin{itemize}
-        \item Choi, M.-D., Johnston, N., and Kribs, D. W.. Journal of Physics A: Mathematical and Theoretical \textbf{42}, 245303 (2009).
-        \item Johnston, N., and Kribs, D. W., \emph{Generalized Multiplicative Domains and Quantum Error Correction} (2009, preprint).
+    \begin{block}{Time Stepping}
+      \rmfamily{
+        \begin{itemize}
+        \item  Chebyshev polynomial discretization in space
+        \item Crank-Nicolson/Adams-Bashforth 2 IMEX scheme for time-stepping
       \end{itemize}
-      \vspace{0.1in}\noindent Preprints and this poster can be downloaded from:
-      \begin{itemize}
-        \item www.arxiv.org
-        \item www.nathanieljohnston.com
-      \end{itemize}}}
+      \begin{figure}
+        \begin{center}
+          \includegraphics[width=0.8\linewidth]{images/phaseportrait3.eps}
+            \caption{Derivative of peak distance versus peak distance.}
+            \label{fig:timestep}
+        \end{center}
+      \end{figure}
+      }
     \end{block}
-    \vskip2ex
+
+    \vskip1ex
+
+    \begin{block}{Future Work}
+        \rmfamily{
+        \begin{itemize}
+          \item Prove that the eigenvalues of the potentially stable double pulse are pure imaginary to leading order in the pulse distance
+          \item Prove spectral stability for the periodic case
+          \item Examine stability of multipulse solutions for lattice PDEs
+        \end{itemize}
+        }
+      \end{block} 
+
+    \vskip1ex
+  
     \begin{block}{References}
       \small{\rmfamily{\begin{thebibliography}{99}
-      \bibitem{KLPL06} D.~W. Kribs, R. Laflamme, D. Poulin, M. Lesosky, Quantum Inf. \& Comp. \textbf{6} (2006), 383-399.
-      \bibitem{zanardi97} P. Zanardi, M. Rasetti, Phys. Rev. Lett. \textbf{79},  3306 (1997).
-      \bibitem{KS06} D.~W. Kribs, R.~W. Spekkens, Phys. Rev. A \textbf{74}, 042329 (2006).
-      \bibitem{Cho74} M.-D. Choi, Illinois J. Math., \textbf{18} (1974), 565-574.
-      \bibitem{Dav96} K.~R. Davidson, \emph{$C^*$-algebras by example}, Fields Institute Monographs, 6. American Mathematical Society, Providence, RI, 1996.
+      \bibitem{Buf}Buffoni B and S\'er\'e E. \emph{A global condition for quasi-random behaviour in a class of conservative systems}. Commun. Pure Appl. Math., 49 (1996), 285-305.
+      \bibitem{Chug}Chugunova M and Pelinovsky P. \emph{Two-pulse solutions in the fifth-order KdV equation: Rigorous theory and numerical approximations}. Discrete and Continuous Dynamical Systems, Series B 8.4 (2007), 773-800.
+      \bibitem{Grov}Groves M D. \emph{Solitary-wave solutions to a class of fifth-order model equations}. Nonlinearity, 11 (1998), 341-353.
+      \bibitem{Sand} Sandstede B. \emph{Stability of multiple-pulse solutions}. Trans. Am. Math. Soc., 350 (1998), 429-472.
       \end{thebibliography}}}
     \end{block}
-    \vskip2ex
-    \begin{block}{Acknowledgements}
-      \small{\rmfamily{M.-D.C. was supported by an NSERC Discovery Grant. N.J. was supported by an NSERC Canada Graduate Scholarship and the University of Guelph Brock Scholarship. D.W.K. was supported by an NSERC Discovery Grant and Discovery Accelerator Supplement, an Ontario Early Researcher Award, and CIF, OIT.}} \\
+
+    \vskip1ex
+
+    \begin{block}{Acknowledgments}
+      \small{\rmfamily{This work is supported by the NSF Grant 1148284 }} \\
       \vspace{0.5in}
-      \begin{center}
-        \begin{tabular}{ccc}
-          \includegraphics[width=3in]{TO.png} & \hspace{1.5in} & \includegraphics[width=3in]{guelph.png}
-        \end{tabular}
-      \end{center}
     \end{block}
   \end{column}
   \begin{column}{\sepwid}\end{column}			% empty spacer column
