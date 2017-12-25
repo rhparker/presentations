@@ -68,7 +68,7 @@
 % Name and authors of poster/paper/research
 %-----------------------------------------------------------
 
-\title{Numerical Stability of Double Pulse Solutions to the 5th order KdV Equation}
+\title{Spectral Stability of Double Pulse Solutions to the 5th order KdV Equation}
 \author{Ross Parker, Bj\"{o}rn Sandstede}
 \institute{Division of Applied Mathematics, Brown University}
 
@@ -89,7 +89,7 @@
       \begin{alertblock}{Goal}
         \rmfamily{
         Examine the spectral stability of the linearization of the 5th order KdV equation about
-        double pulse solutions.
+        double pulse solutions using a numerical approach.
         }
       \end{alertblock}
 
@@ -97,38 +97,19 @@
 
       \begin{block}{Fifth-order KdV Equation}
         \rmfamily{
-            \[ u_t = u_{xxxxx} - u_{xxx} + u u_x \]
-          Applications
-          \begin{itemize}
-            \item Capillary gravity water waves
-            \item Plasma waves
-            \item Laser optics
-          \end{itemize}
-        }
-      \end{block}
-
-      \vskip1ex
-
-      \begin{block}{Traveling Wave Solutions}
-        \rmfamily{
-          Traveling wave ansatz $u(x, t) = u(x - ct, t)$
+          In a moving frame with speed $c$
             \[ u_t = u_{xxxxx} - u_{xxx} - c u_x + u u_x \]
-          
           Equilibrium solution satisfies 5th order ODE 
             \[ u_{xxxxx} - u_{xxx} - c u_x + u u_x = 0 \]
-
-          Since we seek solutions which decay to 0 at $\pm \infty$, 
+          Since we seek solutions $u(x)$ that converge to 0 as $x\to\pm\infty$, 
           integrate once to get 4th order ODE 
             \[u_{xxxx} - u_{xx} - cu + u^2 = 0\]
-
           Equation is Hamiltonian with conserved quantity
           \[
             H = u_x u_{xxx} - \frac{1}{2}u_x^2 - \frac{1}{2}u_{xx}^2 + \frac{c}{2}u^2 - \frac{1}{3}u^3
           \]
         }
       \end{block}
-
-      \vskip1ex
 
       \begin{block}{Homoclinic Orbits}
         \rmfamily{
@@ -137,19 +118,14 @@
           Eigenvalues of linearization
           \vskip0.1ex
             \[ \lambda = \pm \sqrt{ \frac{1 \pm \sqrt{1 - 4c } }{ 2} } \]
-          \vskip0.5ex
+          \vskip1ex
           2D stable manifold, 2D unstable manifold\\
-          \vskip2ex
-          \textbf{Theorem.} \emph{For $c>0$, a homoclinic orbit (single pulse solution) $u(x)$ exists which is smooth, even, and decays exponentially to 0 as $x \rightarrow \pm \infty.$}
+          \vskip1ex
+          \textbf{Theorem. }(\cite{Chug,Grov}) \emph{For $c>0$, a homoclinic orbit (single pulse) $u(x)$ exists which is smooth, even, and decays exponentially to 0 as $x \rightarrow \pm \infty.$}
         }
       \end{block}
- 
-    \end{column}
 
-\begin{column}{\sepwid}\end{column}     % empty spacer column
-
-% second column
-    \begin{column}{\onecolwid}
+      \vskip1ex
 
       \begin{block}{Bifurcation}
       \rmfamily{
@@ -162,24 +138,24 @@
           \end{center}
         \end{figure}
         For $c > 1/4$, $\lambda = \pm \alpha \pm \beta i$. Single pulse solution has tail oscillations with frequency $\beta$.
-      \begin{figure}
-          \begin{center}
-            \includegraphics[width=0.7\textwidth]{images/singlepulsemagright.pdf}
-            \caption{Oscillatory tail of single pulse solution.}
-            \label{fig:singlepulsemagright}
-          \end{center}
-        \end{figure}
       }
       \end{block} 
+ 
+    \end{column}
 
-      \vskip1ex
+\begin{column}{\sepwid}\end{column}     % empty spacer column
+
+% second column
+    \begin{column}{\onecolwid}
 
       \begin{block}{Double Pulses}
       \rmfamily{
         Construct double pulse by joining single pulses at the critical points or zeros of tail oscillations.\\
-        \vskip2ex
-        \textbf{Theorem.} \emph{For $c>1/4$, a countably infinite family of double pulses exists, indexed by $n \in \mathbb{N}$. Double pulses resemble two copies of the single pulse separated by small-amplitude oscillatory tails. Distance between peaks is of order $n \pi / \beta.$
-        }
+
+        \vskip1ex
+ 
+        \textbf{Theorem. }(\cite{Buf,Chug}) \emph{For $c>1/4$, a countably infinite family of double pulses exists, indexed by $n \in \mathbb{N}$. Double pulses resemble two copies of the single pulse separated by small-amplitude oscillatory tails. Distance between peaks is of order $n \pi / \beta.$ 
+        }  
       }
       \end{block}
 
@@ -188,28 +164,25 @@
        \begin{block}{Numerical Methods}
         \rmfamily{
           \begin{itemize}
-            \item Discretization schemes: Fourier and Chebyshev polynomial spectral methods
-            \item Start with known solution for $c = \sqrt{6/13}$
-            \item Parameter continuation in $c$ until $c > 1/4$
+            \item Discretization schemes
+            \begin{itemize}
+              \item Fourier spectral methods
+              \item Chebyshev polynomial spectral methods
+            \end{itemize}
+            \item Parameter continuation
+            \begin{itemize}
+              \item Start with known solution for $c = \sqrt{6/13}$
+              \item Gradually increase $c$ until $c > 1/4$
+            \end{itemize}
             \item Join two single pulses end-to-end at critical point or zero of tail oscillations
             \item Use Matlab's \texttt{fsolve} to solve 4th order ODE
           \end{itemize}
-        }
-      \end{block} 
-
-    \end{column}
-
-\begin{column}{\sepwid}\end{column}     % empty spacer column
-
-% third column
-    \begin{column}{\onecolwid}
-
-      \begin{block}{Double Pulse Construction}
-        \rmfamily{
+   
           \begin{figure}
           \begin{center}
-            \includegraphics[width=0.7\textwidth]{images/doublepulses.eps}
-            \caption{Double pulses 2(2), 2(3), 2(4), and 2(5), $c = 10$.}
+            \includegraphics[width=0.5\textwidth]{images/singlepulsemagright.pdf}
+            \includegraphics[width=0.5\textwidth]{images/doublepulses.eps}
+            \caption{Tail oscillations of single pulse (left). Double pulses 2(2), 2(3), 2(4), and 2(5), $c = 10$ (right).}
             \label{fig:doublepulses}
           \end{center}
           \end{figure}
@@ -223,7 +196,8 @@
             \begin{itemize}
               \item Essential spectrum is entire imaginary axis
               \item Double eigenvalue at 0, eigenfunctions $\phi_x$ and $\phi_c$
-              \item Additional eigenvalues near 0 from pulse interaction, Hamiltonian symmetry
+              \item Additional eigenvalues near 0 from pulse interaction \cite{Sand} 
+              \item Hamiltonian symmetry: if $\lambda$ is an eigenvalue, so are $-\lambda$, $\bar{\lambda}$, and $-\bar{\lambda}$
             \end{itemize}
 
             \begin{figure}
@@ -233,6 +207,17 @@
               \label{fig:eigcartoon}
             \end{center}
             \end{figure}
+        }
+      \end{block} 
+
+    \end{column}
+
+\begin{column}{\sepwid}\end{column}     % empty spacer column
+
+% third column
+    \begin{column}{\onecolwid}
+      \begin{block}{Eigenvalue Computation}
+        \rmfamily{
 
           Numerical computation using Matlab's \texttt{eig}.
           \begin{figure}
@@ -244,22 +229,40 @@
           \end{center}
           \end{figure}
         }
-      \end{block} 
-
-      \vskip1ex
+      \end{block}
 
       \begin{block}{Potentially Stable Double Pulses}
         \rmfamily{
           \begin{itemize}
             \item To find eigenvalues, use exponentially weighted space to move essential spectrum to the left
-            \item For $c = 10$, double pulse 2(3) has a pair of eigenvalues at
+              \begin{figure}
+              \begin{center}
+              \includegraphics[width=0.5\textwidth]{images/stableweighted1.eps}
+              \includegraphics[width=0.5\textwidth]{images/stableweighted2.eps}
+              \caption{Eigenvalues of linearization about double pulse 2(3) in weighted space, $c=10$. Zoom near origin on right.}
+              \label{fig:numericaleig2}
+              \end{center}
+              \end{figure}
+            \item Double pulse 2(3), $c = 10$, has pair of eigenvalues
             \[
             \lambda = 2.0829 \times 10^{-11} \pm 0.0691i
             \]
-          \end{itemize}
-
+          \item Krein signatures
+            \begin{itemize}
+              \item Interaction eigenvalues: negative
+              \item Essential spectrum: positive
+            \end{itemize}
+          \item As domain size is increased, interaction eigenvalue collides with essential spectrum eigenvalue, but does not move off imaginary axis after collision
+              \begin{figure}
+              \begin{center}
+              \includegraphics[width=0.7\textwidth]{images/kreincollision.eps}
+              \caption{Plot of essential spectrum and interaction eigenvalues versus domain length showing collision of eigenvalues.}
+              \label{fig:krein}
+              \end{center}
+              \end{figure}
+        \end{itemize}
         }
-      \end{block} 
+      \end{block}
 
     \end{column}
 
