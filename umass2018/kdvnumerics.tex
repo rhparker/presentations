@@ -1,0 +1,675 @@
+\documentclass[16pt]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage{media9}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx,epsfig}
+ 
+\usetheme{Madrid}
+\usecolortheme{beaver}
+
+\usepackage{anyfontsize}
+ 
+%Information to be included in the title page:
+\title[Stability of Double Pulses]{Stability of Double Pulse Solutions to the 5th order Korteweg–de Vries (KdV) Equation, a Numerical Approach}
+\author[R. Parker]{Ross Parker, Bj\"{o}rn Sandstede}
+\institute{Brown University}
+\date{11 December, 2017}
+ 
+\begin{document}
+ 
+\frame{\titlepage}
+ 
+\begin{frame}
+\frametitle{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Background}
+
+\begin{frame}
+	\frametitle{Fifth-order KdV Equation }   
+	\fontsize{18}{7.2}\selectfont
+	\begin{center}
+		\[ u_t = u_{xxxxx} - u_{xxx} + u u_x \]
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Fifth-order KdV Equation}
+	\fontsize{18}{7.2}\selectfont
+	\begin{description}
+		\item<1->
+			\begin{center}
+			\[ u_t = \underbrace{u_{xxxxx} - u_{xxx}}_{\text{dispersive terms}} + \underbrace{u u_x}_{\text{nonlinear advection}} \]
+			\end{center}
+		\vspace{0.5cm}
+		\item<2->
+
+		Application
+		\begin{itemize}
+			\item Capillary gravity water waves
+			\item Plasma waves
+			\item Laser optics
+		\end{itemize}
+	\end{description}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Traveling wave solutions}
+	\fontsize{18}{7.2}\selectfont
+	\begin{itemize}
+		\item<1-> Ansatz: $u(x, t) = u(x - ct, t) $
+
+		\vspace{0.5cm}
+		\item<2-> Equation becomes
+		\begin{center}
+		\[ u_t = u_{xxxxx} - u_{xxx} - c u_x + u u_x \]
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Hamiltonian Structure}
+	\fontsize{16}{7.2}\selectfont
+		\begin{center}
+		\[ u_t = \partial_x E'(u) \]
+		\end{center}
+
+		\begin{center}
+		\[ E(u) = -\int_{-\infty}^{\infty} \left( \frac{1}{2}u_{xx}^2 + \frac{1}{2}u_x^2 + \frac{1}{2}cu^2 - \frac{1}{3}u^3 \right) dx \]
+		\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Conserved Quantities}
+	\fontsize{16}{7.2}\selectfont
+	\begin{itemize}
+		\item Energy
+		\begin{center}
+		\[ E(u) = -\int_{-\infty}^{\infty} \left( \frac{1}{2}u_{xx}^2 + \frac{1}{2}u_x^2 + \frac{1}{2}cu^2 - \frac{1}{3}u^3 \right) dx \]
+		\end{center}
+
+		\item Generalized momentum ($L^2$ norm)
+
+		\begin{center}
+		\[ N(u) = \int_{-\infty}^\infty |u(x)|^2 dx \]
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Equilibrium solutions}
+	\fontsize{18}{7.2}\selectfont
+	\begin{itemize}
+		\item<1-> For an equilibrium solution, $u_t = 0$
+
+		\vspace{0.5cm}
+		\item<2-> Equilibrium solution satisfies 5th order ODE 
+		\begin{center}
+		\[ u_{xxxxx} - u_{xxx} - c u_x + u u_x = 0 \]
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Equilibrium ODE}
+	\fontsize{16}{7.2}\selectfont
+	\begin{itemize}
+		\item<1->Seek solutions which decay to 0 at $\pm \infty$
+		\vspace{0.5cm}
+		\item<2->Integrate once to get 4th order ODE 
+		\begin{center}
+		\[u_{xxxx} - u_{xx} - cu + u^2 = 0\]
+		\end{center}
+		\vspace{0.5cm}
+		\item<3->Hamiltonian, conserved quantity
+		\begin{center}
+		\[
+		H = u_x u_{xxx} - \frac{1}{2}u_x^2 - \frac{1}{2}u_{xx}^2 + \frac{c}{2}u^2 - \frac{1}{3}u^3
+		\]
+		\end{center}
+		\item<4->At least one solution: $u(x) = 0$
+	\end{itemize} 
+\end{frame}
+
+\begin{frame}
+	\frametitle{The Zero Solution}
+	\fontsize{16}{7.2}\selectfont
+	\begin{itemize}
+		\item<1->Linearization about the zero solution
+		\begin{center}
+		\[v_{xxxx} - v_{xx} - c v = 0 \]
+		\end{center}
+		\item<2->Eigenvalues
+		\begin{center}
+		\[ \lambda = \pm \sqrt{ \frac{1 \pm \sqrt{1 - 4c } }{ 2} } \]
+		\end{center}
+		\item<3->Two positive real part, two negative real part
+		\item<4->2D stable manifold, 2D unstable manifold
+		\item<5->Do we have a homoclinic orbit?
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Homoclinic orbit? Yes!}
+	\fontsize{16}{7.2}\selectfont
+	Exact solution for $c = \sqrt{6/13}$ \footnotesize [Chugunova and Pelinovsky, 2007]
+	\begin{center}
+	\[
+	u(x) = \frac{105}{338}\text{sech}^4\left( \frac{x}{2\sqrt{13}}\right) 
+	\]
+	\end{center}
+	\begin{figure}
+   		\includegraphics[width=0.5\textwidth]{images/exactsol}
+   		\hfill
+   		\includegraphics[width=0.5\textwidth]{images/exactsolorbit}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Single pulses}
+	\fontsize{16}{7.2}\selectfont
+	What about other values of $c$?
+
+	\vspace{1cm}
+
+	\begin{block}{Theorem \footnotesize [Groves (1998), Chugunova and Pelinovsky (2007)]}
+	For $c>0$, a single-pulse solution $u(x)$ exists.
+	\begin{itemize}
+		\item $u(x)$ is smooth
+		\item $u(x)$ is an even function
+		\item $u(x)$ decays exponentially to 0 as $x \rightarrow \pm \infty$
+	\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Bifurcation}
+	\fontsize{16}{7.2}\selectfont
+	At $c = 1/4$, eigenvalues of linearization about zero-solution undergo a bifurcation
+	\includegraphics[width=0.8\textwidth]{images/eigbifurcation}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Bifurcation}
+	\fontsize{16}{7.2}\selectfont
+	\begin{itemize}
+		\item<1-> For $c > 1/4$, $\lambda = \pm \alpha \pm \beta i$
+		\vspace{0.5cm}
+		\item<2-> Tail oscillations
+		\begin{itemize}
+			\item Decay rate $\alpha$
+			\item Frequency $\beta$
+		\end{itemize}
+		\vspace{0.5cm}
+		\item<3-> Exponentially-scaled pulse ($c = 10$)
+		\includegraphics[width=0.5\textwidth]{images/singlepulsemag}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Double Pulses?}
+	\fontsize{16}{7.2}\selectfont
+
+	For $c>1/4$, can we construct a double pulse by joining two single pulses at the critical points of their tail oscillations?
+
+	\begin{center}
+	\includegraphics[width=0.7\textwidth]{images/singlepulsemag}
+	\end{center}
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Double Pulses}
+	\fontsize{16}{7.2}\selectfont
+
+	\begin{block}{Theorem \footnotesize [Buffoni and S\'er\'e (1998), Chugunova and Pelinovsky (2007)]}
+	For $c>1/4$, a countably infinite family of double pulses exists, indexed by $n \in \mathbb{N}$.
+	\begin{itemize}
+		\item Resemble two copies of single pulse solutions
+		\item Two pulses separated by small-amplitude oscillatory tails
+		\item Distance between two pulses approximately $c + n (\pi / 2 \beta)$, $c$ constant
+		\item Smooth, even, exponentially decay
+	\end{itemize}
+	\end{block}
+
+\end{frame}
+
+\section{Numerical Construction of Double Pulses}
+
+\begin{frame}
+	\frametitle{Discretization}
+	\fontsize{16}{7.2}\selectfont
+	\begin{itemize} 
+		\item Fourier spectral methods
+		\begin{itemize} 
+			\item Finite domain $[-L, L]$
+			\item Periodic boundary conditions
+		\end{itemize}
+		\item Chebyshev polynomial spectral methods
+		\begin{itemize} 
+			\item Finite domain $[-L, L]$
+			\item Dirichlet/Neumann boundary conditions at each end
+		\end{itemize}
+		\item For both methods
+		\begin{itemize} 
+			\item $L = 25$ 
+			\item $N = 256$ grid points
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Parameter Continuation}
+	\fontsize{14}{7.2}\selectfont
+	\begin{itemize}
+		\item Start with known solution $u_0(x)$ for $c = \sqrt{6/13}$
+		\item Increase $c$ by small increment
+		\item Use parameter continuation to find new solution $u_1(x)$
+		\item Repeat until parameter $c$ reaches desired value 
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Parameter Continuation}
+	\begin{center}
+		\includemedia[
+		     width=8cm,height=6cm,
+		     activate=pageopen,
+		     addresource=images/continuation.mp4,
+		     flashvars={
+		         source=images/continuation.mp4
+		        &autoPlay=true
+		     }
+	]{}{VPlayer.swf} 
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Double Pulse Construction}
+	\fontsize{16}{7.2}\selectfont
+	1. Truncate
+	\begin{center}
+	\includegraphics[width=0.8\linewidth]{images/singlepulsemagtailcut}
+	\end{center}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Double Pulse Construction}
+	\fontsize{16}{7.2}\selectfont
+	1. Truncate
+	\begin{center}
+	\includegraphics[width=0.8\linewidth]{images/single}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Double Pulse Construction}
+	\fontsize{16}{7.2}\selectfont
+	1. Truncate
+	\begin{center}
+	\includegraphics[width=0.8\linewidth]{images/singlecut}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Double Pulse Construction}
+	\fontsize{16}{7.2}\selectfont
+	2. Mirror
+	\begin{center}
+	\includegraphics[width=0.8\linewidth]{images/dp1before.eps}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Double Pulse Construction}
+	\fontsize{16}{7.2}\selectfont
+	3. Solve (numerically)
+	\begin{center}
+	\includegraphics[width=0.8\linewidth]{images/dp1after.eps}
+	\end{center}
+\end{frame}
+
+\section{Numerical Computation of Spectra}
+
+\begin{frame}
+	\frametitle{Spectral stability}
+	\fontsize{16}{7.2}\selectfont
+	Spectrum of linearization of the PDE about an equilibrium solution $u^*(x)$
+
+	\begin{center}
+		$L = \partial_x^5 - \partial_x^3 + (c - 2 u^*)\partial_x - 2 u^*_x $
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Fredholm Operators}
+	\fontsize{16}{7.2}\selectfont
+	\begin{block}{Fredholm Operator}
+	A linear operator $L$ is Fredholm if
+	\begin{itemize}
+	\item $\ker L$ is finite-dimensional
+	\item $\text{range } L$ is closed
+	\item $\text{range } L$ has finite codimension
+	\end{itemize}
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Eigenvalue problem}
+	\fontsize{16}{7.2}\selectfont
+	\begin{center}
+		$(L - \lambda I )v = 0$
+	\end{center}
+	\begin{itemize}
+	\item Resolvent set: $L - \lambda I$ has bounded inverse
+	\vspace{0.5cm}
+	\item Essential spectrum: $L - \lambda I$ not Fredholm
+	\vspace{0.5cm}
+	\item Point spectrum: $L - \lambda I$ Fredholm but not invertible
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Essential spectrum}
+	\fontsize{16}{7.2}\selectfont
+	Write eigenvalue problem as first-order system
+	\begin{center}
+		$V' = A(\lambda; u^*)V$
+	\end{center}
+	\begin{center}
+	\[
+		A(\lambda;u^*) = 
+		\begin{pmatrix}
+		0 & 1 & 0 & 0 & 0\\
+		0 & 0 & 1 & 0 & 0\\
+		0 & 0 & 0 & 1 & 0\\
+		0 & 0 & 0 & 0 & 1\\
+		\lambda & 2u^* - c & 0 & 1 & 0 \\ 
+		\end{pmatrix}
+	\]
+	\end{center}
+	\begin{center}
+		$V = (v,v_x, v_{xx}, v_{xxx},v_{xxxx})$
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Essential spectrum}
+	\fontsize{16}{7.2}\selectfont
+	\begin{itemize}
+		\item Pulse solutions $u^*(x) \rightarrow 0$ exponentially at $\pm \infty$
+		\item $A(\lambda; u^*)V \rightarrow$ constant matrix $A(\lambda; 0)$ at $\pm \infty$
+		\begin{center}
+		\[
+			A(\lambda;0) = 
+			\begin{pmatrix}
+			0 & 1 & 0 & 0 & 0\\
+			0 & 0 & 1 & 0 & 0\\
+			0 & 0 & 0 & 1 & 0\\
+			0 & 0 & 0 & 0 & 1\\
+			\lambda & -c & 0 & 1 & 0 \\ 
+			\end{pmatrix}
+		\]
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Essential spectrum}
+	\fontsize{16}{7.2}\selectfont
+	\begin{itemize}
+		\item<1-> Essential spectrum of 
+		    \begin{description}
+			\item $V' = A(\lambda; u^*)V$ 
+			\item $V' = A(\lambda; 0)V$ 
+		\end{description}
+		are identical
+	\vspace{0.5cm}
+		\item<2-> $\lambda$ is in the essential spectrum of $A(\lambda; 0)$ whenever the matrix $A(\lambda; 0)$ has an eigenvalue $\nu$ with $\text{Re} \nu = 0$
+
+	\vspace{0.5cm}
+		\item<3->The essential spectrum for our problem is the entire imaginary axis
+
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Spectrum of single pulse}
+	\fontsize{16}{7.2}\selectfont
+	For a single pulse solution $\phi$
+	\begin{itemize}
+		\item Essential spectrum is entire imaginary axis
+		\vspace{0.5cm}
+		\item Double eigenvalue at 0
+		\vspace{0.5cm}
+		\item Corresponding eigenfunctions are $\phi_x$ and $\phi_c$
+	\end{itemize}
+	\begin{center}
+		\includegraphics[width=1\linewidth]{images/eigsingle}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Spectrum of double pulse}
+	\fontsize{16}{7.2}\selectfont
+	For a double pulse solution $\phi$
+	\begin{itemize}
+		\item Essential spectrum is entire imaginary axis
+		\vspace{0.5cm}
+		\item Double eigenvalue at 0
+		\vspace{0.5cm}
+		\item Additional eigenvalue near 0 representing interaction between two pulses \footnotesize [Sandstede (1998) ]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Spectrum of double pulse}
+	\fontsize{16}{7.2}\selectfont
+	\begin{itemize}
+		\item By symmetry from Hamiltonian structure, if $\lambda$ is an eigenvalue, so are $-\lambda, \bar{\lambda}, and -\bar{\lambda}$
+		\vspace{0.5cm}
+		\item Three possibilities for eigenvalues
+		\begin{center}
+			\includegraphics[width=1\linewidth]{images/eigdouble}
+		\end{center}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{PDE Eigenvalues, Numerics}
+	\fontsize{16}{7.2}\selectfont
+	\begin{itemize}
+		\item Discretize eigenvalue problem $Lv = \lambda v$
+		\vspace{0.5cm}
+		\item Compute eigenvalues of matrix $L$ with Matlab's \texttt{eig} function
+		\vspace{0.5cm}
+		\item Similar results for Fourier and Chebyshev polynomial spectral methods
+		\vspace{0.5cm}
+		\item We will show results for Fourier spectral methods
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Eigenvalues, unstable double pulse}
+	\fontsize{16}{7.2}\selectfont
+	\begin{figure}
+   		\includegraphics[width=0.5\textwidth]{images/unstabledoublepulsebigger}
+   		\hfill
+   		\includegraphics[width=0.5\textwidth]{images/unstabledoublepulse2bigger.pdf}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Eigenvalues, unstable double pulse}
+	\fontsize{16}{7.2}\selectfont
+	\begin{figure}
+   		\includegraphics[width=0.5\textwidth]{images/unstabledoublepulsebigger}
+   		\hfill
+   		\includegraphics[width=0.5\textwidth]{images/unstableeig}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Eigenvalues, potentially stable double pulse}
+	\fontsize{16}{7.2}\selectfont
+	\begin{figure}
+   		\includegraphics[width=0.5\textwidth]{images/stabledoublepulsebigger}
+   		\hfill
+   		\includegraphics[width=0.5\textwidth]{images/stabledoublepulse2bigger.pdf}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Eigenvalues, potentially stable double pulse}
+	\fontsize{16}{7.2}\selectfont
+	\begin{figure}
+   		\includegraphics[width=0.5\textwidth]{images/stabledoublepulsebigger}
+   		\hfill
+   		\includegraphics[width=0.5\textwidth]{images/stableeig}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Eigenvalues, weighted space}
+	\fontsize{16}{7.2}\selectfont
+	\begin{figure}
+   		\includegraphics[width=0.5\textwidth]{images/stableeigweighted1.eps}
+   		\hfill
+   		\includegraphics[width=0.5\textwidth]{images/stableeigweighted2.eps}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Eigenvalues, unweighted space}
+	\fontsize{16}{7.2}\selectfont
+	\begin{block}{Nonzero point spectrum (interaction eigenvalues)}
+		\[ \lambda = 2.0829 \times 10^{-11} \pm 0.0691i \]
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Eigenvalues, unweighted space}
+	\fontsize{14}{7.2}\selectfont
+	Is real part actually zero?
+	\begin{itemize}
+		\item<1->Real part of order $10^{-11}$ suggests numerical error.
+		\item<2->Sign of real part seems arbitrary.
+		\item<3->By symmetry of Hamiltonian system, would expect to see quadruplet of eigenvalues
+		 \[ \lambda = \pm \: 2.0829 \times 10^{-11} \pm 0.0691i \]
+		\item<4-> We can numerically construct a ``better'' eigenfunction $v$ with $\lambda$ pure imaginary such that $\max |Lv - \lambda v|$ is improved
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Krein signature}
+	\fontsize{14}{7.2}\selectfont
+	\begin{itemize}
+		\item Detect structural instability of imaginary eigenvalues
+		\item Distinguish eigenvalues from rest of essential spectrum
+		\item For eigenfunction $v$ corresponding to $\lambda = \beta i$
+		\begin{center}
+			\[ \sigma(v) = \text{sgn }v^T E''(u) v \]
+		\end{center}
+		\item Krein signature of imaginary eigenvalues
+		\begin{itemize}
+			\item Essential spectrum: positive
+			\item Interaction eigenvalues: negative
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Time stepping}
+
+\begin{frame}
+	\frametitle{Time stepping}
+	\fontsize{16}{7.2}\selectfont
+	\begin{itemize}
+		\item<1->What really happens near the double-pulse equilibria?
+		\item<2->Time-stepping scheme:
+		\begin{itemize}
+			\item Chebyshev polynomial spectral discretization in space
+			\item Crank-Nicolson/Adams-Bashforth 2 IMEX scheme for time-stepping
+		\end{itemize}
+		\item<3->Initial condition: ``pull apart'' double pulses and let go!
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Time stepping, near unstable double pulse}
+	\fontsize{16}{7.2}\selectfont
+	\begin{center}
+		\includemedia[
+		     width=8cm,height=6cm,
+		     activate=pageopen,
+		     addresource=images/unstable.mp4,
+		     flashvars={
+		         source=images/unstable.mp4
+		        &autoPlay=true
+		     }
+	]{}{VPlayer.swf} 
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Time stepping, near potentially stable double pulse}
+	\fontsize{16}{7.2}\selectfont
+	\begin{center}
+		\includemedia[
+		     width=8cm,height=6cm,
+		     activate=pageopen,
+		     addresource=images/stable.mp4,
+		     flashvars={
+		         source=images/stable.mp4
+		        &autoPlay=true
+		     }
+	]{}{VPlayer.swf} 
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Phase portrait, near potentially stable double pulse}
+	\fontsize{16}{7.2}\selectfont
+	Plot distance between pulses vs. the derivative of this distance
+	\begin{center}
+	\includegraphics[width=0.6\linewidth]{images/phaseportrait1}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Phase portrait}
+	\fontsize{16}{7.2}\selectfont
+	\begin{center}
+	\includegraphics[width=0.8\linewidth]{images/phaseportrait2}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Future directions}
+	\fontsize{16}{7.2}\selectfont
+	\begin{itemize}
+		\item For the unbounded case, prove that the eigenvalues of the potentially stable double pulse are pure imaginary to leading order
+		\item Prove spectral stability for the periodic case
+		\item Use the Krein matrix to prove spectral stability (has been unsuccessful to date)
+		\item Examine stability of multipulse solutions for lattice PDEs
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{References}
+	\fontsize{12}{7.2}\selectfont
+	\begin{enumerate}
+		\item Buffoni B and S\'er\'e E. \emph{A global condition for quasi-random behaviour in a class of conser- vative systems}. Commun. Pure Appl. Math., 49 (1996), 285-305.
+		\item Chugunova M and Pelinovsky P. \emph{Two-pulse solutions in the fifth-order KdV equation: Rigorous theory and numerical approximations}. Discrete and Continuous Dynamical Systems, Series B 8.4 (2007), 773-800.
+		\item Groves M D. \emph{Solitary-wave solutions to a class of fifth-order model equations}. Nonlinearity, 11 (1998), 341-353.
+		\item Sandstede B. \emph{Stability of multiple-pulse solutions}. Trans. Am. Math. Soc., 350 (1998), 429-472.
+	\end{enumerate}
+\end{frame}
+ 
+\end{document}
