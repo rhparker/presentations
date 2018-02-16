@@ -13,10 +13,19 @@
 \usepackage{anyfontsize}
  
 %Information to be included in the title page:
-\title[Stability of Double Pulses]{Stability of Double Pulse Solutions to the 5th order Korteweg–de Vries (KdV) Equation, a Numerical Approach}
+\title[Stability of Double Pulses]{Stability of Double Pulse Solutions to the 5th order Korteweg–de Vries (KdV) Equation}
+\subtitle{A (Mostly) Numerical Approach}
 \author[R. Parker]{Ross Parker, Bj\"{o}rn Sandstede}
 \institute{Brown University}
-\date{11 December, 2017}
+\date{13 February, 2018}
+
+\AtBeginSection[]
+{
+  \begin{frame}
+    \frametitle{Outline}
+    \tableofcontents[currentsection]
+  \end{frame}
+}
  
 \begin{document}
  
@@ -33,8 +42,24 @@
 	\frametitle{Fifth-order KdV Equation }   
 	\fontsize{18}{7.2}\selectfont
 	\begin{center}
-		\[ u_t = u_{xxxxx} - u_{xxx} + u u_x \]
+		\[ u_t = u_{xxxxx} - u_{xxx} - 2 u u_x \]
 	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Fifth-order KdV Equation }   
+	\fontsize{16}{7.2}\selectfont
+	Weakly nonlinear long wave approximation to capillary-gravity wave problem
+	\vspace{0.5cm}
+	\begin{itemize}
+		\item Long wave (Boussinesq) approximation: wavelength long compared to wave depth
+		\item Capillary-gravity waves
+		\begin{itemize}
+		    \item Influenced by surface tension and gravity
+		    \item Longer wavelength than ripples
+		    \item Shorter wavelength than ordinary water waves 
+		\end{itemize}
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -43,12 +68,12 @@
 	\begin{description}
 		\item<1->
 			\begin{center}
-			\[ u_t = \underbrace{u_{xxxxx} - u_{xxx}}_{\text{dispersive terms}} + \underbrace{u u_x}_{\text{nonlinear advection}} \]
+			\[ u_t = \underbrace{u_{xxxxx} - u_{xxx}}_{\text{dispersive terms}} - \underbrace{ 2 u u_x}_{\text{nonlinear advection}} \]
 			\end{center}
 		\vspace{0.5cm}
 		\item<2->
 
-		Application
+		Applications
 		\begin{itemize}
 			\item Capillary gravity water waves
 			\item Plasma waves
@@ -66,7 +91,7 @@
 		\vspace{0.5cm}
 		\item<2-> Equation becomes
 		\begin{center}
-		\[ u_t = u_{xxxxx} - u_{xxx} - c u_x + u u_x \]
+		\[ u_t = u_{xxxxx} - u_{xxx} + c u_x - 2 u u_x \]
 		\end{center}
 	\end{itemize}
 \end{frame}
@@ -95,7 +120,7 @@
 		\item Generalized momentum ($L^2$ norm)
 
 		\begin{center}
-		\[ N(u) = \int_{-\infty}^\infty |u(x)|^2 dx \]
+		\[ N(u) = \frac{1}{2} \int_{-\infty}^\infty |u(x)|^2 dx \]
 		\end{center}
 	\end{itemize}
 \end{frame}
@@ -109,7 +134,7 @@
 		\vspace{0.5cm}
 		\item<2-> Equilibrium solution satisfies 5th order ODE 
 		\begin{center}
-		\[ u_{xxxxx} - u_{xxx} - c u_x + u u_x = 0 \]
+		\[ u_{xxxxx} - u_{xxx} + c u_x - 2 u u_x = 0 \]
 		\end{center}
 	\end{itemize}
 \end{frame}
@@ -122,7 +147,7 @@
 		\vspace{0.5cm}
 		\item<2->Integrate once to get 4th order ODE 
 		\begin{center}
-		\[u_{xxxx} - u_{xx} - cu + u^2 = 0\]
+		\[u_{xxxx} - u_{xx} + cu - u^2 = 0\]
 		\end{center}
 		\vspace{0.5cm}
 		\item<3->Hamiltonian, conserved quantity
@@ -141,11 +166,11 @@
 	\begin{itemize}
 		\item<1->Linearization about the zero solution
 		\begin{center}
-		\[v_{xxxx} - v_{xx} - c v = 0 \]
+		\[v_{xxxx} - v_{xx} + c v = 0 \]
 		\end{center}
 		\item<2->Eigenvalues
 		\begin{center}
-		\[ \lambda = \pm \sqrt{ \frac{1 \pm \sqrt{1 - 4c } }{ 2} } \]
+		\[ \nu = \pm \sqrt{ \frac{1 \pm \sqrt{1 - 4c } }{ 2} } \]
 		\end{center}
 		\item<3->Two positive real part, two negative real part
 		\item<4->2D stable manifold, 2D unstable manifold
@@ -156,10 +181,10 @@
 \begin{frame}
 	\frametitle{Homoclinic orbit? Yes!}
 	\fontsize{16}{7.2}\selectfont
-	Exact solution for $c = \sqrt{6/13}$ \footnotesize [Chugunova and Pelinovsky, 2007]
+	Exact solution for $c = \sqrt{6/13}$ \footnotesize [Chugunova and Pelinovsky (2007)]
 	\begin{center}
 	\[
-	u(x) = \frac{105}{338}\text{sech}^4\left( \frac{x}{2\sqrt{13}}\right) 
+	q(x) = \frac{105}{338}\text{sech}^4\left( \frac{x}{2\sqrt{13}}\right) 
 	\]
 	\end{center}
 	\begin{figure}
@@ -177,11 +202,11 @@
 	\vspace{1cm}
 
 	\begin{block}{Theorem \footnotesize [Groves (1998), Chugunova and Pelinovsky (2007)]}
-	For $c>0$, a single-pulse solution $u(x)$ exists.
+	For $c>0$, a single-pulse solution $q(x)$ exists.
 	\begin{itemize}
-		\item $u(x)$ is smooth
-		\item $u(x)$ is an even function
-		\item $u(x)$ decays exponentially to 0 as $x \rightarrow \pm \infty$
+		\item $q(x)$ is smooth
+		\item $q(x)$ is an even function
+		\item $q(x)$ decays exponentially to 0 as $x \rightarrow \pm \infty$
 	\end{itemize}
 	\end{block}
 \end{frame}
@@ -189,24 +214,30 @@
 \begin{frame}
 	\frametitle{Bifurcation}
 	\fontsize{16}{7.2}\selectfont
-	At $c = 1/4$, eigenvalues of linearization about zero-solution undergo a bifurcation
+	\begin{itemize}
+	\item Eigenvalues of linearization about zero solution
+		\begin{center}
+		\[ \nu = \pm \sqrt{ \frac{1 \pm \sqrt{1 - 4c } }{ 2} } \]
+		\end{center}
+	\item At $c = 1/4$, these eigenvalues undergo a bifurcation
 	\includegraphics[width=0.8\textwidth]{images/eigbifurcation}
+\end{itemize}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Bifurcation}
 	\fontsize{16}{7.2}\selectfont
 	\begin{itemize}
-		\item<1-> For $c > 1/4$, $\lambda = \pm \alpha \pm \beta i$
+		\item<1-> For $c > 1/4$, $\nu = \pm \alpha \pm \beta i$
 		\vspace{0.5cm}
 		\item<2-> Tail oscillations
 		\begin{itemize}
-			\item Decay rate $\alpha$
-			\item Frequency $\beta$
+			\item Spatial decay rate $\alpha$
+			\item Spatial frequency $\beta$
 		\end{itemize}
 		\vspace{0.5cm}
 		\item<3-> Exponentially-scaled pulse ($c = 10$)
-		\includegraphics[width=0.5\textwidth]{images/singlepulsemag}
+		\includegraphics[width=0.5\textwidth]{images/singlepulsemagrightlargertext.pdf}
 	\end{itemize}
 \end{frame}
 
@@ -217,7 +248,7 @@
 	For $c>1/4$, can we construct a double pulse by joining two single pulses at the critical points of their tail oscillations?
 
 	\begin{center}
-	\includegraphics[width=0.7\textwidth]{images/singlepulsemag}
+	\includegraphics[width=0.7\textwidth]{images/singlepulsemagright.pdf}
 	\end{center}
 
 \end{frame}
@@ -232,10 +263,226 @@
 	\begin{itemize}
 		\item Resemble two copies of single pulse solutions
 		\item Two pulses separated by small-amplitude oscillatory tails
-		\item Distance between two pulses approximately $c + n (\pi / 2 \beta)$, $c$ constant
+		\item Distance between two pulses approximately $2L_0 + n (\pi / \beta)$, $L_0$ constant
 		\item Smooth, even, exponentially decay
 	\end{itemize}
 	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Comparison to lower order equations}
+	\fontsize{16}{7.2}\selectfont
+
+	\begin{itemize}
+		\item Third-order KdV Equation
+		\[
+		u_t + u_{xxx} - 6 u u_x = 0
+		\]
+		\item Soliton solutions are homoclinic orbits connecting asymptotic rest state to itself.
+		\item Eigenvalues of linearization about zero solution are $\nu = \pm \beta$, for $\beta$ real (and $\nu = 0$).
+		\item No tail oscillations
+		\item Multipulse traveling wave equilibrium solutions do not exist
+	\end{itemize}
+
+\end{frame}
+
+\section{Construction of Double Pulses}
+
+\begin{frame}
+	\frametitle{Double Pulses}
+	\fontsize{16}{7.2}\selectfont
+	\begin{itemize}
+		\item<1->How do double pulses form?
+			\vspace{0.5cm}
+
+		\item<2->It's complicated.
+			\vspace{0.5cm}
+
+		\item<3->Look at heuristic argument.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Existence of double pulses}
+	\fontsize{16}{7.2}\selectfont
+
+	\begin{itemize}
+	\item We are looking for a solution to the 4th order equilibrium ODE
+	\begin{center}
+	\[u_{xxxx} - u_{xx} + cu - u^2 = 0\]
+	\end{center}		
+	\vspace{0.5cm}
+
+	\item Linearize about the single pulse solution $q(x)$
+	\begin{center}
+	\[ L = \partial_x^4 - \partial_x^2 + c - 2 q(x) \]
+	\end{center}
+
+	\end{itemize}
+
+\end{frame}
+
+
+\begin{frame}
+	\frametitle{Existence of double pulses}
+	\fontsize{16}{7.2}\selectfont
+
+	Write linearized existence problem as first order system.
+
+	\begin{center}
+		$V' = A(q(x))V$
+	\end{center}
+
+	\begin{center}
+	\[
+		A(q(x)) = 
+		\begin{pmatrix}
+		0 & 1 & 0 & 0\\
+		0 & 0 & 1 & 0\\
+		0 & 0 & 0 & 1\\
+		2q(x) - c & 0 & 1 & 0 \\ 
+		\end{pmatrix}
+	\]
+	\end{center}
+	\begin{center}
+		$V = (v,v_x, v_{xx}, v_{xxx} )$
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Variational equation}
+	\fontsize{16}{7.2}\selectfont
+
+	\begin{itemize}
+		\item Variational equation\\
+		\[V' = A(q(x)) V\]
+		\item Adjoint variational equation \\
+		\[W' = -A(q(x))^* W\]
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Variational equation}
+	\fontsize{16}{7.2}\selectfont
+
+	\begin{align*}
+	V' &= A(q(x)) V\\
+	W' &= -A(q(x))^* W
+	\end{align*}
+
+	\begin{itemize}
+		\item Variational equation: unique bounded solution $Q'(x)$
+		\vspace{0.5cm}
+		\item Adjoint variational equation: unique bounded solution $\Psi(x)$
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Geometry of adjoint solution}
+	\fontsize{16}{7.2}\selectfont
+
+	Adjoint solution $\Psi(x)$ perpendicular to the tangent spaces of both stable and unstable manifolds of the equilibrium at 0.
+
+	\begin{center}
+		\includegraphics[width=0.6\linewidth]{images/WsWu.pdf}
+	\end{center}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Existence of double pulses}
+	\fontsize{16}{7.2}\selectfont
+
+	For a double pulse to form, the solution must ``jump'' from stable manifold at $x = L$ to unstable manifold at $x = -L$.
+
+	\begin{center}
+		\includegraphics[width=0.6\linewidth]{images/WsWuL.pdf}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Double pulses}
+	\fontsize{16}{7.2}\selectfont
+
+	For $c > 1/4$, the manifolds ``twist'' due to the imaginary part of the eigenvalues $\pm \alpha + \pm \beta i$ \footnotesize [Sandstede (1993), Sandstede (2002)].
+
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{images/manifoldslineup.pdf}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Double pulses}
+	\fontsize{16}{7.2}\selectfont
+
+	The ``jump'' is possible when $Q'(L)$ is perpendicular to $Y^-(-L)$ \footnotesize [Sandstede (1993), Sandstede (2002)].
+
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{images/manifoldslineup.pdf}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Double pulses}
+	\fontsize{16}{7.2}\selectfont
+
+	This is equivalent to $Q'(L)$ and $\Psi(-L)$ being parallel.
+
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{images/manifoldslineup.pdf}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Double pulses}
+	\fontsize{16}{7.2}\selectfont
+
+	\begin{itemize}
+		\item Eigenvalues of linearization about zero solution
+		\[\pm \alpha \pm \beta i \]
+		\item $Q'(L)$ and $\Psi(-L)$ rotate in opposite directions with period $2 \pi/L$
+
+		\begin{center}
+			\includegraphics[width=0.5\linewidth]{images/psiqrotate.pdf}
+		\end{center}
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Double pulses}
+	\fontsize{16}{7.2}\selectfont
+	If $Q'(L)$ and $\Psi(-L)$ are parallel at $x = L$, then they will ``line up'' again every 1/4 period.
+	
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{images/psiqoneperiod.pdf}
+	\end{center}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Double pulses}
+	\fontsize{16}{7.2}\selectfont
+	Distance between pulses is discrete: $D_n = 2 L_n$
+
+	\begin{align*}
+	L_n &= L_0 + n \frac{\pi}{ 2 \beta } && L_0 \text{ constant}
+	\end{align*}
+	
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{images/psiqoneperiodIP.pdf}
+	\end{center}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Double pulses}
+	\fontsize{16}{7.2}\selectfont
+	Homoclinic orbit of double pulse, pulse distance $2L$.
+
+	\begin{center}
+		\includegraphics[width=0.6\linewidth]{images/WsWuDouble.pdf}
+	\end{center}
 
 \end{frame}
 
@@ -335,6 +582,15 @@
 	\end{center}
 \end{frame}
 
+\begin{frame}
+	\frametitle{Double Pulse Construction}
+	\fontsize{16}{7.2}\selectfont
+	First four double pulses ($c = 10$)
+	\begin{center}
+	\includegraphics[width=0.8\linewidth]{images/doublepulses.eps}
+	\end{center}
+\end{frame}
+
 \section{Numerical Computation of Spectra}
 
 \begin{frame}
@@ -361,7 +617,7 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Eigenvalue problem}
+	\frametitle{PDE eigenvalue problem}
 	\fontsize{16}{7.2}\selectfont
 	\begin{center}
 		$(L - \lambda I )v = 0$
@@ -431,7 +687,7 @@
 		\end{description}
 		are identical
 	\vspace{0.5cm}
-		\item<2-> $\lambda$ is in the essential spectrum of $A(\lambda; 0)$ whenever the matrix $A(\lambda; 0)$ has an eigenvalue $\nu$ with $\text{Re} \nu = 0$
+		\item<2-> $\lambda$ is in the essential spectrum of $A(\lambda; 0)$ whenever the matrix $A(\lambda; 0)$ has an eigenvalue $\nu$ with $\text{Re } \nu = 0$
 
 	\vspace{0.5cm}
 		\item<3->The essential spectrum for our problem is the entire imaginary axis
@@ -444,6 +700,7 @@
 	\frametitle{Spectrum of single pulse}
 	\fontsize{16}{7.2}\selectfont
 	For a single pulse solution $\phi$
+	\vspace{0.5cm}
 	\begin{itemize}
 		\item Essential spectrum is entire imaginary axis
 		\vspace{0.5cm}
@@ -460,6 +717,7 @@
 	\frametitle{Spectrum of double pulse}
 	\fontsize{16}{7.2}\selectfont
 	For a double pulse solution $\phi$
+	\vspace{0.5cm}
 	\begin{itemize}
 		\item Essential spectrum is entire imaginary axis
 		\vspace{0.5cm}
@@ -559,8 +817,8 @@
 	\fontsize{14}{7.2}\selectfont
 	Is real part actually zero?
 	\begin{itemize}
-		\item<1->Real part of order $10^{-11}$ suggests numerical error.
-		\item<2->Sign of real part seems arbitrary.
+		\item<1->Real part of order $10^{-11}$ suggests numerical error
+		\item<2->Sign of real part is arbitrary
 		\item<3->By symmetry of Hamiltonian system, would expect to see quadruplet of eigenvalues
 		 \[ \lambda = \pm \: 2.0829 \times 10^{-11} \pm 0.0691i \]
 		\item<4-> We can numerically construct a ``better'' eigenfunction $v$ with $\lambda$ pure imaginary such that $\max |Lv - \lambda v|$ is improved
@@ -579,10 +837,68 @@
 		\end{center}
 		\item Krein signature of imaginary eigenvalues
 		\begin{itemize}
-			\item Essential spectrum: positive
+			\item \large Essential spectrum: positive
 			\item Interaction eigenvalues: negative
 		\end{itemize}
 	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Krein collisions}
+	\fontsize{14}{7.2}\selectfont
+	As domain size is increased
+	\begin{itemize}
+		\item Smallest essential spectrum eigenvalue approaches zero
+		\item Essential spectrum eigenvalue collides with interaction eigenvalue
+		\item But it does not move off imaginary axis after collision
+	\end{itemize}
+	\begin{center}
+	\includegraphics[width=0.6\textwidth]{images/kreincollision.eps}
+	\end{center}
+\end{frame}
+
+\section{One theorem}
+
+\begin{frame}
+	% \frametitle{Location of Eigenvalues}
+	\fontsize{14}{7.2}\selectfont
+
+	\begin{block}{Theorem}
+	For $c > 1/4$, let $q_2(x)$ be a double pulse solution with pulse distance $2L$. Then, to leading order, the interaction eigenvalues of the linearization of KdV5 about $q_2(x)$ are given by
+ 	\[
+ 		\lambda^2 = \frac{\langle Q'(L), \Psi(-L) \rangle }{M}
+	\]
+	where $M$ is the derivative with respect to $c$ of the generalized momentum of the single pulse $q(x)$.
+	\[
+	M = \frac{\partial}{\partial c} N(q) = \frac{\partial}{\partial c} \frac{1}{2} \int_{-\infty}^\infty |q(x)|^2 dx 
+	\]
+	The error is of order $e^{-3 \alpha L}$ for some $\alpha > 0$.
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Unstable double pulses}
+	\fontsize{16}{7.2}\selectfont
+	\begin{itemize}
+		\item Numerics suggests that $M$ is negative.
+		\item For even $n$, $\langle Q'(L_n), \Psi(-L_n) \rangle < 0$
+		\item To leading order, $\lambda = \pm \beta$, for $\beta$ real
+		\item Error term will not move this off the real axis, so is negligible
+		\item We can conclude these double pulses are unstable
+	\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+	\frametitle{Potentially stable double pulses}
+	\fontsize{16}{7.2}\selectfont
+	\begin{itemize}
+		\item For odd $n$, $\langle Q'(L_n), \Psi(-L_n) \rangle > 0$
+		\item To leading order, $\lambda = \pm \beta i $, for $\beta$ real
+		\item Error term can move these off the imaginary axis, so is not negligible
+		\item We cannot conclude these double pulses are stable
+	\end{itemize}
+
 \end{frame}
 
 \section{Time stepping}
@@ -651,12 +967,26 @@
 \end{frame}
 
 \begin{frame}
+	\frametitle{Phase portrait}
+	\fontsize{16}{7.2}\selectfont
+	This resembles phase portrait of simplified 2D ODE
+	\begin{align*}
+	\dot{x} &= y \\
+	\dot{y} &= C e^{-\alpha x} \sin \beta x
+	\end{align*}
+	\begin{center}
+	\includegraphics[width=0.65\linewidth]{images/simplephaseportrait}
+	\end{center}
+\end{frame}
+
+\begin{frame}
 	\frametitle{Future directions}
 	\fontsize{16}{7.2}\selectfont
 	\begin{itemize}
-		\item For the unbounded case, prove that the eigenvalues of the potentially stable double pulse are pure imaginary to leading order
 		\item Prove spectral stability for the periodic case
-		\item Use the Krein matrix to prove spectral stability (has been unsuccessful to date)
+		\vspace{0.5cm}
+		\item Use the Krein matrix to prove spectral stability for the unbounded case (has been unsuccessful to date)
+		\vspace{0.5cm}
 		\item Examine stability of multipulse solutions for lattice PDEs
 	\end{itemize}
 \end{frame}
@@ -665,10 +995,12 @@
 	\frametitle{References}
 	\fontsize{12}{7.2}\selectfont
 	\begin{enumerate}
-		\item Buffoni B and S\'er\'e E. \emph{A global condition for quasi-random behaviour in a class of conser- vative systems}. Commun. Pure Appl. Math., 49 (1996), 285-305.
+		\item Buffoni B and S\'er\'e E. \emph{A global condition for quasi-random behaviour in a class of conservative systems}. Commun. Pure Appl. Math., 49 (1996), 285-305.
 		\item Chugunova M and Pelinovsky P. \emph{Two-pulse solutions in the fifth-order KdV equation: Rigorous theory and numerical approximations}. Discrete and Continuous Dynamical Systems, Series B 8.4 (2007), 773-800.
 		\item Groves M D. \emph{Solitary-wave solutions to a class of fifth-order model equations}. Nonlinearity, 11 (1998), 341-353.
+		\item Sandstede B. \emph{Verzweigungstheorie homokliner Verdopplungen}. Ph.D. thesis, University of Stuttgart, 1993.
 		\item Sandstede B. \emph{Stability of multiple-pulse solutions}. Trans. Am. Math. Soc., 350 (1998), 429-472.
+		\item Sandstede B. \emph{Stability of travelling waves}. In: \emph{Handbook of Dynamical Systems II} (B Fiedler, ed). Elsevier (2002) 983-1055.
 	\end{enumerate}
 \end{frame}
  

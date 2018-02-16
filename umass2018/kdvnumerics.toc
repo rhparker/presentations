@@ -1,5 +1,7 @@
 \beamer@endinputifotherversion {3.26pt}
 \beamer@sectionintoc {1}{Background}{3}{0}{1}
-\beamer@sectionintoc {2}{Numerical Construction of Double Pulses}{29}{0}{2}
-\beamer@sectionintoc {3}{Numerical Computation of Spectra}{37}{0}{3}
-\beamer@sectionintoc {4}{Time stepping}{60}{0}{4}
+\beamer@sectionintoc {2}{Construction of Double Pulses}{32}{0}{2}
+\beamer@sectionintoc {3}{Numerical Construction of Double Pulses}{49}{0}{3}
+\beamer@sectionintoc {4}{Numerical Computation of Spectra}{59}{0}{4}
+\beamer@sectionintoc {5}{One theorem}{84}{0}{5}
+\beamer@sectionintoc {6}{Time stepping}{88}{0}{6}
