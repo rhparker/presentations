@@ -1,0 +1,81 @@
+% waves2015abstract_template.tex
+% by Gino Biondini and Thiab Taha, 2014/8/18
+%
+% Use this file to submit abstracts for talks.
+
+% Please do not modify the TeX commands below!
+% The abstracts will be reformatted and combined in the conference's book of abstracts.
+
+\documentclass[12pt]{article}
+\textwidth 6.5in
+\textheight 8.5in
+\renewcommand\floatpagefraction{0.9}
+\renewcommand{\baselinestretch}{1.0}
+\topmargin 0.3in
+\parskip 10pt
+\parindent 0pt
+\evensidemargin 0mm
+\oddsidemargin 0mm
+\renewcommand{\refname}{\normalsize\bf References} 
+\makeatletter
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+  {-2.4ex \@plus -1ex \@minus -.2ex}{1.0ex \@plus.1ex}%
+  {\normalfont\large\bf}}
+\def\title#1{{\large\bf #1}} 
+\def\author#1#2#3{\vglue1ex{\bf #1}\\[0.4ex]{\small #2}\\[0.2ex]\textit{\small #3}}
+\long\def\abstract#1{\par\bigskip\centerline{\bf Abstract}\par\smallskip}
+\makeatother
+
+\begin{document}
+\pagestyle{empty}
+\begin{center}
+
+% Please fill in the session information as appropriate in the fields below.
+
+\title{Title of the presentation}
+
+% Use this format if two or more authors share the same address
+\author{First author name and second author name}
+  {Address of the first and second author\\Second line of the address, if necessary}
+  {first.author@university.edu and second.author@university.edu} 
+
+% Use the asterisk for presenters 
+\author{Third author's name$^*$}
+  {Address (add lines as above if necessary)}
+  {third.author@university.edu}
+
+% Use this command to insert additional authors if necessary
+\author{Fourth author name}
+  {Address (add lines as above if necessary)}
+  {fourth.author@university.edu}
+
+\end{center}
+
+\abstract
+
+Please remember that abstracts must be no more than one page in length.
+Also, please refrain from modifying the \LaTeX\ formatting, as abstracts will be reformatted and combined in the conference's book of abstracts.
+Below is a sample abstract.
+
+The class of complex modified Korteweg-de Vries (CMKdV) equations has many
+applications. One form of the CMKdV equation has been used to create models 
+for the nonlinear evolution of plasma waves, for the propagation of transverse 
+waves in a molecular chain, and for a generalized elastic solid.
+Another form of the CMKdV equation has been used for the traveling-wave and
+for a double homoclinic orbit \cite{Herbst_Ablowitz_Ryan}.
+
+In this paper we introduce sequential and parallel split-step Fourier methods
+for numerical simulations of the above equation.
+The parallel methods are implemented on the Origin 2000 multiprocessor computer.
+Our numerical experiments have shown that the finite difference and the
+inverse scattering methods give accurate results and considerable speedup.
+
+\begin{thebibliography}{1}
+
+\bibitem{Herbst_Ablowitz_Ryan} B. M. Herbst, M. J. Ablowitz and E. Ryan,
+Numerical homoclinic instabilities and the complex modified Korteweg-de Vries equation,
+{\sl Comput. Phys. Commun.}, {\bf 65} (1991), 137-142.
+
+\end{thebibliography}
+
+\end{document}

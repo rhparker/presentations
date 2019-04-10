@@ -33,9 +33,17 @@
 \newlength{\twocolwid}
 \setlength{\paperwidth}{48in}
 \setlength{\paperheight}{36in}
+
+% % 3 columnm
+% \setlength{\sepwid}{0.024\paperwidth}
+% \setlength{\onecolwid}{0.3\paperwidth}
+% \setlength{\twocolwid}{0.624\paperwidth}
+
+% 4 column
 \setlength{\sepwid}{0.024\paperwidth}
 \setlength{\onecolwid}{0.22\paperwidth}
 \setlength{\twocolwid}{0.464\paperwidth}
+
 \setlength{\topmargin}{-0.5in}
 \usetheme{confposter}
 \usepackage{exscale}
@@ -69,8 +77,8 @@
 %-----------------------------------------------------------
 
 \title{Spectral Stability of Multi-Pulse Solutions to the Suspension Bridge Equation}
-\author{Ross Parker, Todd Kapitula, Bj\"{o}rn Sandstede}
-\institute{Division of Applied Mathematics, Brown University}
+\author{Ross Parker, Bj\"{o}rn Sandstede, Todd Kapitula }
+\institute{Division of Applied Mathematics, Brown University \hspace{2in} Department of Mathematics, Calvin College}
 
 %-----------------------------------------------------------
 % Start the poster itself
@@ -88,14 +96,14 @@
     \begin{column}{\onecolwid}
      
       \begin{block}{Suspension Bridge Equation}
-        \rmfamily{
-          Original model for waves on a suspended beam
+          Model for waves on a suspended beam (\cite{Chen97})
             \[ u_{tt} + u_{xxxx} + u^+ - 1 = 0 \]
-          Smooth approximation to this model
+          Smooth approximation (\cite{Chen97})
             \[ u_{tt} + u_{xxxx} + e^{u} - 1 = 0 \]
-          In a co-moving frame with speed $c$
-            \[ u_{tt} - 2 c u_{x t} + u_{xxxx} + c^2 u_{xx} + e^{u} - 1 = 0 \]
-        }
+          In co-moving frame with speed $c$
+            \begin{equation}\label{PDEc}
+            u_{tt} - 2 c u_{x t} + u_{xxxx} + c^2 u_{xx} + e^{u} - 1 = 0
+            \end{equation}
       \end{block}
 
       \begin{block}{Homoclinic Orbits}
@@ -104,13 +112,15 @@
             \begin{equation}\label{eqODE}
              u_{xxxx} + c^2 u_{xx} + e^{u} - 1 = 0
              \end{equation}
-          For $c \in (0, \sqrt{2})$, eigenvalues of linearization about 0 are
+          Eigenvalues of linearization about 0, for $c \in (0, \sqrt{2})$
           \vskip0.1ex
-            \[ \mu = \pm \sqrt{\frac{-c^2 \pm \sqrt{c^4 - 4}}{2} } = \pm \alpha \pm \beta i,\]
+          \begin{align*}
+          \mu &= \pm \sqrt{\frac{-c^2 \pm \sqrt{c^4 - 4}}{2} } = \pm \alpha \pm \beta i
+          \end{align*}
           \vskip1ex
             2D stable manifold, 2D unstable manifold\\
           \vskip1ex
-          \textbf{Theorem 1. }(VdB) For $c^2 \in [0.5, 1.9]$, a homoclinic orbit (single pulse) solution $q(x; c)$ exists which is smooth, even, and decays exponentially to 0 as $x \rightarrow \pm \infty.$
+          \textbf{Theorem 1. }(\cite{Berg18}) For $c^2 \in [0.5, 1.9]$, a homoclinic orbit (primary pulse) solution $q(x)$ of \eqref{eqODE} exists which is smooth, even, and decays exponentially to 0 as $x \rightarrow \pm \infty.$
         }
       \end{block}
 
@@ -119,7 +129,7 @@
       \begin{block}{Numerical Construction}
         \rmfamily{
 
-          Primary pulse solutions constructed numerically using the string method [Chamard2011].
+          Primary pulse solutions $q(x)$ constructed numerically using the string method (\cite{Chamard11})
 
           \begin{figure}
           \begin{center}
@@ -131,7 +141,14 @@
           \end{figure}
         }
       \end{block}
- 
+
+      \vskip1ex
+   
+      \begin{block}{Acknowledgments}
+        \small{\rmfamily{This work is supported by the NSF Grant 1148284 }} \\
+        \vspace{0.5in}
+      \end{block}
+
     \end{column}
 
 \begin{column}{\sepwid}\end{column}     % empty spacer column
@@ -141,21 +158,21 @@
 
       \begin{block}{Multi-Pulse Solutions}
       \rmfamily{
-      \textbf{Theorem 2. }(San97) Let $q(x; c)$ be a localized homoclinic orbit solution to \eqref{eqODE}. Choose any integer $n \geq 2$ and any sequence of nonnegative integers $k_1, \dots, k_{n-1}$ such that at least one of the $k_j \in \{0, 1 \}$. Then
-
+      \textbf{Theorem 2. }(\cite{San97}) Let $q(x)$ be a localized homoclinic orbit solution to \eqref{eqODE}. Choose any integer $n \geq 2$ and any sequence of nonnegative integers $k_1, \dots, k_{n-1}$ with at least one of the $k_j \in \{0, 1 \}$.
+      \vskip1ex
       \begin{itemize}
-        \item For any sufficiently large integer $m$, there exists a unique $n-$modal solution $q_n(x, c)$ to \eqref{eqODE} This solution resembles $n$ well-separated copies of the primary pulse $q(x; c)$. The distance between successive peaks is given by the $X_1, \dots, X_{n-1}$, where
+        \item For any sufficiently large integer $m$, there exists a unique $n-$modal solution $q_n(x)$ to \eqref{eqODE}. This solution resembles $n$ well-separated copies of the primary pulse $q(x)$. The distance between successive peaks is $2X_1, \dots, 2X_{n-1}$, where
         \begin{equation*}
         X_j \approx \frac{\pi}{\beta}(2 m + k_j) + C
         \end{equation*}
 
-        \item Linearization of \eqref{eqODE} about the $n-$pulse $q_n(x; c)$ is given by
+        \item The linearization of \eqref{eqODE} about $q_n(x)$ is
 
-          \begin{equation}\label{defA0}
+          \begin{equation*}\label{defA0}
           A_0(q_n) = \partial_x^4 + c^2 \partial_x^2 + e^{q_n}.
-          \end{equation} 
+          \end{equation*} 
 
-          $A_0(q_n)$ has precisely $n$ real eigenvalues $\nu_j$ close to 0, where $\nu_n = 0$ is a simple eigenvalue, and for $j = 1, \dots, n-1$,
+          $A_0(q_n)$ has precisely $n$ real eigenvalues $\nu_j$ close to 0, where $\nu_n = 0$ is a simple eigenvalue. For $j = 1, \dots, n-1$,
 
           \begin{align*}
           \nu_j < 0 \text{ if } k_j \text{ is odd} \\
@@ -179,18 +196,17 @@
 
       \begin{block}{PDE Eigenvalue Problem}
       \rmfamily{
-      Linearization of the PDE \eqref{suspc} about the $n-$pulse $q_n(x; c)$ is the quadratic eigenvalue problem
+      Linearization of the PDE \eqref{PDEc} about the $n-$pulse solution $q_n(x)$ is the quadratic eigenvalue problem
 
       \begin{equation}\label{quadeig}
-      P_2(\lambda; q_n)v =  [A_2 \lambda^2 + A_1 \lambda + A_0(q_n)]v = 0,
+      P_2(\lambda; q_n)v =  [A_2 \lambda^2 + A_1 \lambda + A_0(q_n)]v = 0
       \end{equation}
 
-      where $A_0(q_n)$ is defined in \eqref{defA0} and 
-
-      \begin{align}
+      \begin{align*}
+      A_0(q_n) &= \partial_x^4 + c^2 \partial_x^2 + e^{q_n} \\
       A_1 &= -2 c \partial_x \\
       A_2 &= I
-      \end{align}
+      \end{align*}
 
       }
       \end{block}
@@ -208,62 +224,93 @@
         }
       \end{block}
 
-      \begin{block}{Krein Matrix, Definition}
-        \rmfamily{
-        Consider a polynomial eigenvalue of the form
-        \begin{equation}
-        P_n(\lambda) = \sum_{j=0}^n \lambda_j A_j
-        \end{equation}
-        where the operators $A_j$ are Hermitian for $j$ even and skew-Hermitian for $j$ odd.
-        \vskip1ex
-        The Krein Matrix is a matrix-valued function $K(\lambda)$ with the properties that for $\lambda \in i\mathbb{R}$
-        \begin{itemize}
-          \item $K(\lambda)$ is meromorphic.
-          \item $\det K(\lambda) = 0$ only if $\lambda$ is a polynomial eigenvalue.
-          \item $K(\lambda)$ can be used to determine the Krein signature of a polynomial eigenvalue.
-        \end{itemize}
-        }
-      \end{block}
-
       \vskip1ex
 
-      \begin{block}{Krein Matrix, Construction}
-      \rmfamily{
-      \begin{itemize}
-        \item Let $S$ be the $n-$dimensional space 
-
-        \begin{equation}\label{defS}
-        S = \text{span}\{s_1, \dots, s_n \},
+      \begin{block}{Krein Matrix}
+        \rmfamily{
+        Consider a polynomial eigenvalue problem
+        \begin{equation}\label{polyeig}
+        P_n(\lambda) = \sum_{j=0}^n \lambda_j A_j = 0
         \end{equation}
-
-        where $s_j(x)$ are the eigenfunctions corresponding to the small eigenvalues $\nu_j$, which are defined in Theorem 2. 
-
-        \item The operator $A_0(q_n)$ is boundedly invertible on $S^\perp$.
-
-        \item The Krein matrix is defined by
-
-        \begin{equation}\label{Kreinmatrix}
-        [K_S(z)]_{jk} = 
-        \langle s_j , P_2(iz)s_k\rangle 
-        - \langle s_j , P_2(iz) P_{S^{\perp}} (P_{S^{\perp}} P_2(iz)|_{S^{\perp}} )^{-1} P_{S^{\perp}} P_2(iz) s_k \rangle
-        \end{equation}
-
-      \end{itemize}
+        where the operators $A_j$ are Hermitian for $j$ even and skew-Hermitian for $j$ odd.\\
+        \vskip1ex
+        The Krein Matrix is a matrix-valued function $K(\lambda)$ with the properties that for $\lambda \in i\mathbb{R}$
+        \vskip1ex
+        \begin{itemize}
+          \item $K(\lambda)$ is meromorphic
+          \item $\det K(\lambda) = 0$ only if $\lambda$ is a polynomial eigenvalue
+          \item $K(\lambda)$ can be used to determine the Krein signature of a polynomial eigenvalue
+        \end{itemize}
       }
       \end{block}
 
-    \end{column}
+      \begin{block}{Krein Matrix Construction}
+        \rmfamily{
 
-  \begin{column}{\sepwid}\end{column}			% empty spacer column
+        Let $S$ be the $n-$dimensional space 
+        \begin{equation*}\label{defS}
+        S = \text{span}\{s_1, \dots, s_n \}
+        \end{equation*}
 
-  \begin{column}{\onecolwid}
+        where $s_j(x)$ are the eigenfunctions corresponding to the small eigenvalues $\nu_j$ from Theorem 2.
+
+        \vskip1ex
+
+        The Krein matrix is the $n\times n$ matrix $K(z)$, where 
+
+        \begin{align}\label{Kreinmatrix}
+        [K&(z)]_{jk} = 
+        \langle s_j , P_2(iz)s_k\rangle \\
+        &- \langle s_j , P_2(iz) P_{S^{\perp}} (P_{S^{\perp}} P_2(iz)|_{S^{\perp}} )^{-1} P_{S^{\perp}} P_2(iz) s_k \rangle \nonumber
+        \end{align}
+
+        \vskip1ex
+
+        \textbf{Theorem 3. }Let $q_n(x)$ be an $n-$pulse solution to \eqref{eqODE}. Let $\nu_1, \dots, \nu_n$ be the small eigenvalues of $A_0(q_n)$, as defined in Theorem 2. Then, under some mild hypotheses, the Krein matrix is given by
+
+        \begin{align}\label{Kreinapprox}
+        K_S(z) = ||&q_x||^2 \text{diag} (\nu_1, \dots, \nu_n) \\
+         &+ d''(c) I \overline{z}^2 + \mathcal{O}(e^{-(3 \alpha/2) X_m}|z| + |z|^3), \nonumber
+        \end{align}
+
+        \begin{align*}
+        d''(c) &= -\frac{\partial}{\partial c} \left( c ||q_x||^2 \right) \\
+        X_m &= \min\{ X_1, \dots, X_{n-1} \} 
+        \end{align*}
+      }
+      \end{block}
+
+  \end{column}
+
+\begin{column}{\sepwid}\end{column}     % empty spacer column
+
+% fourth column
+\begin{column}{\onecolwid}
+
+    \begin{block}{Stability Criterion}
+    \rmfamily{
+    \textbf{Corollary. }Let $q_n(x)$ be an $n-$pulse solution to \eqref{eqODE}, constructed according to Theorem 2 using the sequence of nonnegative integers $\{ k_1, \dots, k_{n-1} \}$ and the nonnegative integer $m$. Let $\nu_1, \dots, \nu_n$ be the small eigenvalues of $A_0(q_n)$, where $\nu_n = 0$.
+    \vskip1ex
+    \begin{itemize}
+      \item If $\nu_1, \dots, \nu_{n-1} < 0$ (equivalently, all $k_j$ are odd), then for sufficiently large $m$, equation \eqref{quadeig} has $n - 1$ pairs of purely imaginary eigenvalues near 0, which are given by
+
+      \begin{equation*}\label{npulseKreineigs}
+      \lambda_j^\pm = \pm i \left( ||q_x|| \sqrt{ \frac{|\nu_j|}{d''(c)} } + \mathcal{O}(e^{-(3 \alpha/2) X_m}) \right)
+      \end{equation*}
+
+      Thus $q_n(x)$ is linearly neutrally stable.
+
+      \item If $\nu_j > 0$ for some $j = 1, \dots, n-1$ (equivalently, at least one $k_j$ is even), then equation \eqref{quadeig} has at least one eigenvalue with positive real part. Thus $q_n(x; c)$ is linearly unstable.
+    \end{itemize}
+    
+    }
+    \end{block}
 
     \begin{block}{Future Work}
         \rmfamily{
         \begin{itemize}
-          \item Prove that the eigenvalues of the potentially stable double pulse are pure imaginary to leading order in the pulse distance
-          \item Prove spectral stability for the periodic case
-          \item Examine stability of multipulse solutions for lattice PDEs
+          \item Explore other applications of the Krein Matrix.
+          \item Use Lin's method for stability analysis of multi-pulse solutions to the suspension bridge equation.
         \end{itemize}
         }
       \end{block} 
@@ -272,19 +319,14 @@
   
     \begin{block}{References}
       \small{\rmfamily{\begin{thebibliography}{99}
-      \bibitem{Buf}Buffoni B and S\'er\'e E. \emph{A global condition for quasi-random behaviour in a class of conservative systems}. Commun. Pure Appl. Math., 49 (1996), 285-305.
-      \bibitem{Chug}Chugunova M and Pelinovsky P. \emph{Two-pulse solutions in the fifth-order KdV equation: Rigorous theory and numerical approximations}. Discrete and Continuous Dynamical Systems, Series B 8.4 (2007), 773-800.
-      \bibitem{Grov}Groves M D. \emph{Solitary-wave solutions to a class of fifth-order model equations}. Nonlinearity, 11 (1998), 341-353.
-      \bibitem{Sand} Sandstede B. \emph{Stability of multiple-pulse solutions}. Trans. Am. Math. Soc., 350 (1998), 429-472.
+      \bibitem{Chen97} Chen Y. and McKenna P.J. \emph{Traveling Waves in a Nonlinearly Suspended Beam: Theoretical Results and Numerical Observations}. J. Diff. Eq., 136 (1997), 325-355.
+      \bibitem{Berg18} van den Berg J.B. et al. \emph{Continuation of homoclinic orbits in the suspension bridge equation: A computer-assisted proof}. J. Diff. Eq., 264 (2018), 3086-3120.
+      \bibitem{Chamard11} Chamard J. et al. \emph{Computation of Minimum Energy Paths for Quasi-Linear Problems}. J. Sci. Comp., 49 (2011), 180-194.
+      \bibitem{San97} Sandstede B. \emph{Instability of Localized Buckling Modes in a One-Dimensional Strut Model}. Phil. Trans. Roy. Soc. A, 355 (1997), 2083-2097.
       \end{thebibliography}}}
+
     \end{block}
 
-    \vskip1ex
-
-    \begin{block}{Acknowledgments}
-      \small{\rmfamily{This work is supported by the NSF Grant 1148284 }} \\
-      \vspace{0.5in}
-    \end{block}
   \end{column}
   \begin{column}{\sepwid}\end{column}			% empty spacer column
  \end{columns}
