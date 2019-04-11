@@ -49,7 +49,7 @@ Department of Mathematics and Statistics, Calvin College}
 	\frametitle{Suspension Bridge Equation}
 		\begin{figure}
 	    \begin{center}
-	    \includegraphics[width=8cm]{images/goldengate.jpg}
+	    \includegraphics[width=7cm]{images/goldengate.jpg}
 	    \end{center}
 	    \end{figure}
 		``I observed that the suspended structure of the bridge was undulating vertically in a wavelike motion of considerable amplitude... The truss would be quiet for a second, and then in the distance one could see a running wave of several nodes approaching.'' \textendash \: R.G.Cone, chief engineer of the
@@ -58,21 +58,23 @@ Department of Mathematics and Statistics, Calvin College}
 
 \begin{frame}
 	\frametitle{Suspension Bridge Equation}
-		\begin{figure}
-	    \begin{center}
-	    \includegraphics[width=8cm]{images/goldengate.jpg}
-	    \end{center}
-	    \end{figure}
-		Model for waves on a suspended beam (Chen and McKenna, 1997)
+		Model for waves on a suspended beam of infinite length (McKenna and Walter, 1990)
      	\[ u_{tt} + u_{xxxx} + u^+ - 1 = 0 \]
+     \begin{itemize}
+     	\item $u$ is vertical displacement.
+     	\item Beam bends under its own weight.
+     	\item Restoring force is only for downward displacement.
+     \end{itemize}
+ 
 \end{frame}
 
 \begin{frame}
 	\frametitle{Suspension Bridge Equation}   
+		Model for waves on a suspended beam of infinite length (McKenna and Walter, 1990)
+     	\[ u_{tt} + u_{xxxx} + u^+ - 1 = 0 \]
 	\begin{itemize}
-		\item Model for waves on a suspended beam (Chen and McKenna, 1997)
-            \[ u_{tt} + u_{xxxx} + u^+ - 1 = 0 \]
-        \item Smooth approximation
+        \item Equation supports traveling wave solutions.
+        \item Smooth approximation (Chen and McKenna, 1990)
             \[ u_{tt} + u_{xxxx} + e^{u} - 1 = 0 \]
         \item In co-moving frame with speed $c$
             \[ u_{tt} - 2 c u_{x t} + u_{xxxx} + c^2 u_{xx} + e^{u} - 1 = 0 \]
@@ -111,7 +113,7 @@ Department of Mathematics and Statistics, Calvin College}
 
 \begin{frame}
 \frametitle{Multi-Pulses}   
-    \begin{theorem}[Sandstede, 1997]
+    \begin{theorem}[Buffoni et al., 1996; Sandstede, 1997]
     \begin{itemize}
     \item Multi-pulse solutions $q_n(x)$ exist, which resemble $n$ copies of the primary pulse $q(x)$ spliced together.
 
@@ -129,20 +131,23 @@ Department of Mathematics and Statistics, Calvin College}
 
 \begin{frame}
 \frametitle{Multi-Pulses}   
-    \begin{theorem}[Sandstede, 1997]
+    \begin{theorem}[Buffoni et al., 1996; Sandstede, 1997]
     \begin{itemize}
-    	\item Linearization $A_0(q_n)$ has $n$ real eigenvalues $\nu_1, \dots, \nu_n$ close to 0. 
+    	\item Linearization of equilibrium ODE about $q_n$ 
+    	\[
+    	A_0(q_n) = \partial_x^4 + c^2 \partial_x^2 + e^{q_n} 
+    	\]
+    	\begin{figure}
+		\begin{center}
+		\includegraphics[width=7cm]{images/A0essspec.pdf}
+		\end{center}
+		\end{figure}
 
-    	\item $\nu_n = 0$ is a simple eigenvalue
+    	\item $n$ eigenvalues $\nu_1, \dots \nu_n$ near 0
 
-    	\item For $j = 1, \dots, n-1$,
-        \begin{align*}
-            \nu_j < 0 \text{ if } k_j \text{ is odd} \\
-            \nu_j > 0 \text{ if } k_j \text{ is even} 
-        \end{align*}
         \begin{figure}
 		\begin{center}
-		\includegraphics[width=7cm]{images/A0eigpattern.pdf}
+		\includegraphics[width=7cm]{images/A0smalleigs.pdf}
 		\end{center}
 		\end{figure}
     \end{itemize}
@@ -176,6 +181,11 @@ Department of Mathematics and Statistics, Calvin College}
     \end{align*}
 
     \item $A_0$ has $n$ eigenvalues close to 0.
+        \begin{figure}
+		\begin{center}
+		\includegraphics[width=7cm]{images/A0essspec.pdf}
+		\end{center}
+		\end{figure}
 	\end{itemize}
 \end{frame}
 
@@ -463,11 +473,13 @@ Department of Mathematics and Statistics, Calvin College}
 
 \begin{frame}
 \frametitle{References}
-      \fontsize{12}{7.2}\selectfont
+      \fontsize{10}{7.2}\selectfont
       \begin{thebibliography}{9}
       \setbeamertemplate{bibliography item}[text]
+      \bibitem{Buffoni96} Buffoni et al. \emph{Bifurcation and coalescence of a plethora of homoclinic orbits for a Hamiltonian system}. J. Dynam. Differ. Equat. 8 (1996), 221–279.
       \bibitem{Chamard11} Chamard J. et al. \emph{Computation of minimum energy paths for quasi-linear problems}. J. Sci. Comp., 49 (2011), 180-194.
       \bibitem{Chen97} Chen Y. and McKenna P.J. \emph{Traveling waves in a nonlinearly suspended beam: theoretical results and numerical observations}. J. Diff. Eq., 136 (1997), 325-355.\bibitem{Kap19} Kapitula T. et at. \emph{Another reformulated Krein matrix for star-even polynomial operators with applications}. Submitted for publication, 2019.
+      \bibitem{McKenna90} McKenna P. J. and Walter W. \emph{Traveling waves in a suspension bridge}. SIAM J. Appl. Math 50 (1990), 703-715.
       \bibitem{San97} Sandstede B. \emph{Instability of localized buckling modes in a one-dimensional strut model}. Phil. Trans. Roy. Soc. A, 355 (1997), 2083-2097.
       \bibitem{Berg18} van den Berg J.B. et al. \emph{Continuation of homoclinic orbits in the suspension bridge equation: A computer-assisted proof}. J. Diff. Eq., 264 (2018), 3086-3120.
       \end{thebibliography}
