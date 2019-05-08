@@ -14,10 +14,10 @@
 \usepackage{anyfontsize}
  
 %Information to be included in the title page:
-\title[Stability of Multi-Pulses]{Stability of Multi-Pulse Solutions to the 5th order Korteweg–de Vries (KdV) Equation}
+\title[Stability of Multi-Pulses]{Spectral Stability of Periodic Multi-Pulses in the 5th Order KdV Equation}
 \author[R. Parker]{Ross Parker, Bj\"{o}rn Sandstede}
 \institute{Brown University}
-\date{Sometime in May}
+\date{21 May, 2019}
 
 \AtBeginSection[]
 {
@@ -74,7 +74,9 @@
 		Applications
 		\begin{itemize}
 			\item Capillary gravity water waves
+			\vspace{0.25cm}	
 			\item Plasma waves
+			\vspace{0.25cm}
 			\item Laser optics
 		\end{itemize}
 	\end{description}
@@ -109,7 +111,7 @@
 		\[u_{xxxx} - u_{xx} + cu - u^2 = 0\]
 		\end{center}
 		\vspace{0.25cm}
-		\item Eigenvalues of linearziation about rest state
+		\item Eigenvalues of linearization about rest state
 		\begin{center}
 		\includegraphics[width=0.7\textwidth]{images/eigbifurcation2}
 		\end{center}
@@ -282,8 +284,8 @@
 \begin{frame}
 \frametitle{Periodic Multi-Pulses} 
 	\fontsize{16}{7.2}\selectfont
-    \begin{block}{Theorem}
-    For sufficiently well-separated pulses, periodic multi-pulse solutions exist.
+    \begin{block}{Theorem [P.]}
+    For sufficiently large $X_j$, periodic multi-pulse solutions exist with distances $X_j$.
 
 	\begin{figure}
 	\begin{center}
@@ -296,8 +298,8 @@
 \begin{frame}
 \frametitle{Periodic Multi-Pulses} 
 	\fontsize{16}{7.2}\selectfont
-    \begin{block}{Theorem}
-    For 2-periodic pulses, solutions with $X_0 \neq X_1$ bifurcate from solutions with $X_0 = X_1$ in a series of pitchforks.
+    \begin{block}{Theorem [P.]}
+    2-periodic pulses with $X_0 \neq X_1$ bifurcate from 2-periodic pulses with $X_0 = X_1$ in a series of pitchforks.
 
 	\begin{figure}
 	\begin{center}
@@ -320,7 +322,7 @@
 		\end{itemize}
 		\item Eigenvalues resulting from pulse interaction 
 		\begin{itemize}
-			\item Each puse interacts with two neighbors
+			\item Each pulse interacts with two neighbors
 			\item Depend on geometry of periodic multi-pulse
 		\end{itemize}
 	\end{itemize}
@@ -335,7 +337,7 @@
     \begin{block}{Theorem}
     To leading order, $\lambda$ is a PDE eigenvalue for the linearization about a periodic $n-$pulse if and only if 
     \[
-    \det\begin{pmatrix}K(\lambda) & 0 \\ 0 & A - \lambda^2  M I \end{pmatrix} = 0
+    \det\begin{pmatrix}K(\lambda) & 0 \\ 0 & A - \lambda^2  M I \end{pmatrix} + \text{``h.o.t.''} = 0
     \]
     \begin{itemize}
     	\item $K(\lambda)$ is an $n \times n$ matrix which depends only on the background state
@@ -390,18 +392,144 @@
 \end{frame}
 
 \begin{frame}
+\frametitle{Location of Eigenvalues} 
+	\fontsize{14}{7.2}\selectfont
+    \begin{block}{Theorem}
+    To leading order, $\lambda$ is a PDE eigenvalue for the linearization about a periodic $n-$pulse if and only if 
+    \[
+    \det\begin{pmatrix}K(\lambda) & 0 \\ 0 & A - \lambda^2  M I \end{pmatrix} + \text{``h.o.t.''} = 0
+    \]
+    As long as the singular points of the two blocks are not too close, the complete picture for eigenvalues near 0 is
+    \begin{itemize}
+    	\item An eigenvalue with algebraic multiplicity 3 at 0
+    	\item $n-1$ pairs of interaction eigenvalues. Each pair is either real or purely imaginary.
+    	\item Discrete pairs of purely imaginary ``essential spectrum'' eigenvalues
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
 	\frametitle{Location of Eigenvalues}
 	\fontsize{16}{7.2}\selectfont
+		\begin{figure}
+		\begin{center}
+		\includegraphics[width=4cm]{images/2pulsestable}
+		\includegraphics[width=4cm]{images/2pulsestableeig}
+		\includegraphics[width=4cm]{images/2pulseunstable}
+		\includegraphics[width=4cm]{images/2pulseunstableeig}
+		\end{center}
+		\caption{\textcolor{red}{Interaction} eigenvalues and \textcolor{blue}{``essential spectrum''} eigenvalues for neutrally stable and unstable periodic 2-pulse.}
+		\end{figure}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Location of Interaction Eigenvalues for 2-Periodic Pulse}
+	\fontsize{16}{7.2}\selectfont
+		\begin{figure}
+		\begin{center}
+		\includegraphics[width=7cm]{images/2pulsestabilitydiagram.eps}
+		\end{center}
+		\caption{Eigenvalues bifurcate at pitchfork bifurcation points.}
+		\end{figure}
+\end{frame}
+
+\section{Time Stepping for 2-pulses}
+
+\begin{frame}
+	\frametitle{Time Stepping}
+	\fontsize{16}{7.2}\selectfont
 	\begin{itemize}
-		\item Cool stuff.
+		\item Suppose 2-pulse eigenvalue pattern on real line is 
+		\begin{figure}
+		\begin{center}
+		\includegraphics[width=5cm]{images/DPeigpattern.eps}
+		\end{center}
+		\end{figure}
+		\item Numerics suggests this is the case
+		\vspace{0.5cm}
+		\item What does this imply for PDE dynamics?
 	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Time stepping}
+	\fontsize{16}{7.2}\selectfont
+	\begin{itemize}
+		\item What happens near the 2-pulse equilibria?
+		\vspace{0.5cm}
+		\item Time-stepping scheme:
+		\begin{itemize}
+			\item Chebyshev polynomial spectral discretization in space
+			\item Dirichlet/Neumann boundary conditions
+			\item Crank-Nicolson/Adams-Bashforth 2 IMEX scheme for time-stepping
+		\end{itemize}
+		\vspace{0.5cm}
+		\item Initial condition: ``pull apart'' 2-pulses and let go!
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Time stepping, near unstable double pulse}
+	\fontsize{16}{7.2}\selectfont
+	\begin{center}
+		\includemedia[
+		     width=8cm,height=6cm,
+		     activate=pageopen,
+		     addresource=images/unstable.mp4,
+		     flashvars={
+		         source=images/unstable.mp4
+		        &autoPlay=true
+		     }
+	]{}{VPlayer.swf} 
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Time stepping, near neutrally stable double pulse}
+	\fontsize{16}{7.2}\selectfont
+	\begin{center}
+		\includemedia[
+		     width=8cm,height=6cm,
+		     activate=pageopen,
+		     addresource=images/stable.mp4,
+		     flashvars={
+		         source=images/stable.mp4
+		        &autoPlay=true
+		     }
+	]{}{VPlayer.swf} 
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Phase portrait}
+	\fontsize{16}{7.2}\selectfont
+	\begin{center}
+	\includegraphics[width=0.8\linewidth]{images/phaseportrait2}
+	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Phase portrait}
+	\fontsize{16}{7.2}\selectfont
+	Resembles phase portrait of 2D ODE
+	\begin{align*}
+	\dot{x} &= y \\
+	\dot{y} &= C e^{-\alpha x} \sin \beta x
+	\end{align*}
+	\begin{center}
+	\includegraphics[width=0.65\linewidth]{images/simplephaseportrait}
+	\end{center}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Future directions}
 	\fontsize{16}{7.2}\selectfont
 	\begin{itemize}
-		\item Cool stuff.
+		\item Re-examine case on the real line.
+		\vspace{0.5cm}
+		\item Apply general theory to multi-pulse solutions in other systems.
+		\vspace{0.5cm}
+		\item Look at multi-pulses in discrete systems.
 	\end{itemize}
 \end{frame}
 
