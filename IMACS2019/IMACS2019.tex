@@ -1,4 +1,4 @@
-\documentclass[16pt]{beamer}
+ \documentclass[16pt]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage{animate}
 \usepackage{media9}
@@ -59,7 +59,7 @@ Department of Mathematics and Statistics, Calvin College}
 \begin{frame}
 	\frametitle{Suspension Bridge Equation}
 		Model for waves on a suspended beam of infinite length (McKenna and Walter, 1990)
-     	\[ u_{tt} + u_{xxxx} + u^+ - 1 = 0 \]
+     	\[ u_{tt} + u_{xxxx} + (u+1)^+ - 1 = 0 \]
      \begin{itemize}
      	\item $u$ is vertical displacement.
      	\item Beam bends under its own weight.
@@ -71,10 +71,10 @@ Department of Mathematics and Statistics, Calvin College}
 \begin{frame}
 	\frametitle{Suspension Bridge Equation}   
 		Model for waves on a suspended beam of infinite length (McKenna and Walter, 1990)
-     	\[ u_{tt} + u_{xxxx} + u^+ - 1 = 0 \]
+     	\[ u_{tt} + u_{xxxx} + (u+1)^+ - 1 = 0 \]
 	\begin{itemize}
         \item Equation supports traveling wave solutions.
-        \item Smooth approximation (Chen and McKenna, 1990)
+        \item Smooth approximation (Chen and McKenna, 1997)
             \[ u_{tt} + u_{xxxx} + e^{u} - 1 = 0 \]
         \item In co-moving frame with speed $c$
             \[ u_{tt} - 2 c u_{x t} + u_{xxxx} + c^2 u_{xx} + e^{u} - 1 = 0 \]
@@ -131,7 +131,7 @@ Department of Mathematics and Statistics, Calvin College}
 
 \begin{frame}
 \frametitle{Multi-Pulses}   
-    \begin{theorem}[Buffoni et al., 1996; Sandstede, 1997]
+    \begin{theorem}[Sandstede, 1997]
     \begin{itemize}
     	\item Linearization of equilibrium ODE about $q_n$ 
     	\[
@@ -192,56 +192,13 @@ Department of Mathematics and Statistics, Calvin College}
 \section{Krein Matrix for Small Eigenvalues}
 
 \begin{frame}
-\frametitle{Krein Matrix}
-\begin{definition}[Kapitula et al., 2019]
-    The \emph{Krein matrix} is an $n \times n$ matrix-valued function $K_S(z)$ associated with 
-    \begin{itemize}
-    	\item A $\star$-even operator polynomial 
-    	\[
-    	\calP_n(\lambda) = \sum_{j=0}^n \lambda^j A_j
-    	\] 
-    	with operator coefficients $A_j$ in a Hilbert space $X$
-    	\item A finite dimensional subspace $S \subset X$.
-    \end{itemize}
-
-    The \emph{Krein eigenvalues} are the eigenvalues $r_1(z), \dots, r_n(z)$ of $K_S(z)$.
-    \begin{itemize}
-      \item $r_j(z)$ is meromorphic.
-      \item If $\lambda = iz$ is a polynomial eigenvalue, then 
-      either some $r_j(z) = 0$ or the corresponding eigenfunction is in $S^\perp$.
-    \end{itemize}
-\end{definition}
-\end{frame}
-
-\begin{frame}
-\frametitle{Krein Matrix Construction}
-	To construct the Krein matrix, we need
-	\begin{itemize}
-		\item A $\star$-even operator polynomial $\calP_n(\lambda)$
-		\item A finite dimensional subspace $S$ of $X$ spanned by $s_1, \dots, s_n$
-	\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Krein Matrix Construction}
-	To construct the Krein matrix, we need
-	\begin{itemize}
-		\item A $\star$-even operator polynomial $\calP_n(\lambda)$
-		\item A finite dimensional subspace $S$ of $X$ spanned by $s_1, \dots, s_n$
-	\end{itemize}
-
-	The Krein matrix is the $n \times n$ matrix $K_S(z)$ with entries
-
-        \begin{align*}
-        [K_S&(z)]_{jk} = -z \Big( 
-        \langle s_j , \calP_n(iz)s_k\rangle \\
-        &- \langle s_j , \calP_n(iz) P_{S^{\perp}} (P_{S^{\perp}} \calP_n(iz)|_{S^{\perp}} )^{-1} P_{S^{\perp}} \calP_n(iz) s_k \rangle \Big)
-        \end{align*}
-
-    \begin{itemize}
-    \item<2->This looks like a mess.
-    \item<3->We hope to simplify this considerably.
-    \item<4->The choice of an appropriate $S$ is critical.
+\frametitle{Krein Matrix for Small Eigenvalues}
+	What do we have? 
+	\begin{itemize}	
+	\item A $\star$-even quadratic operator polynomial
+	\[ \calP_2(\lambda) = A_2 \lambda^2 + A_1 \lambda + A_0 \]
+	\item $A_0$ has $n$ eigenvalues $\{ \nu_1, \dots, \nu_n \}$ near 0 with eigenfunctions $\{s_1, \dots, s_n \}$.
+	\item Choose $S$ to be the $n-$dimensional space spanned by these.
 	\end{itemize}
 \end{frame}
 
@@ -254,52 +211,99 @@ Department of Mathematics and Statistics, Calvin College}
 	\item $A_0$ has $n$ eigenvalues near 0 with eigenfunctions $\{s_1, \dots, s_n \}$.
 	\item Choose $S$ to be the $n-$dimensional space spanned by these.
 	\end{itemize}
+
+	\begin{block}{Goal}
+	\begin{itemize}
+	\item<1->Reduce the eigenvalue problem to finding the eigenvalues of a $n \times n$ matrix.
+	\item<2->Ideally, this matrix will have a simple form. 
+	\end{itemize}
+	\end{block}
 \end{frame}
 
 \begin{frame}
 \frametitle{Krein Matrix for Small Eigenvalues}
-	The Krein matrix is given by
+	\begin{block}{Krein Matrix (Kapitula et al, 2019)}
+	\begin{align*}
+        [K_S(z)]_{jk} &= -z \Big( 
+        \langle s_j , \calP_2(iz)s_k\rangle \\
+        &- \langle s_j , \calP_2(iz) P_{S^{\perp}} (P_{S^{\perp}} \calP_2(iz)|_{S^{\perp}} )^{-1} P_{S^{\perp}} \calP_2(iz) s_k \rangle \Big)  \\
+    \end{align*}
+    \end{block}
+    For real $z$, the Krein Matrix is Hermitian.\\
+    \vspace{1ex} 
+    The \emph{Krein eigenvalues} are the eigenvalues $r_1(z), \dots, r_n(z)$ of $K_S(z)$.
+    \begin{itemize}
+      \item $r_j(z)$ is meromorphic.
+      \item If $\lambda = iz$ is a polynomial eigenvalue, then 
+      either some $r_j(z) = 0$ or the corresponding eigenfunction is in $S^\perp$.
+      \item If $\lambda = iz$ is a polynomial eigenvalue, its Krein signature is determined by slope of an appropriate Krein eigenvalue.
+    \end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Krein Matrix for Small Eigenvalues}
+	\begin{block}{Krein Matrix (Kapitula et al, 2019)}
 	\begin{align*}
         [K_S(z)]_{jk} &= -z \Big( 
         \langle s_j , \calP_2(iz)s_k\rangle \\
         &- \langle s_j , \calP_2(iz) P_{S^{\perp}} (\underbrace{P_{S^{\perp}} \calP_2(iz)|_{S^{\perp}} }_{\text{This depends on }z})^{-1} P_{S^{\perp}} \calP_2(iz) s_k \rangle \Big) \\
         \calP_2(iz) &= -A_2 z^2 + i A_1 z + A_0
     \end{align*}
+    \end{block}
 
     \begin{itemize}
-    \item<1-> We would like $K(z)$ to be a matrix-valued polynomial in $z$.
-    \item<2-> The term $(P_{S^{\perp}} \calP_2(iz)|_{S^{\perp}})^{-1}$ is annoying.
-    \item<3-> Idea: For small $z$, approximate $\calP_2(iz)$ by $A_0$.
-    \item<4-> $A_0$ is invertible on $S^\perp$ by our choice of $S$.
+    \item<1-> This does not look simple.
+    \item<2-> We would like $K(z)$ to be a matrix-valued polynomial in $z$.
+    \item<3-> The term $(P_{S^{\perp}} \calP_2(iz)|_{S^{\perp}})^{-1}$ is annoying.
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Krein Matrix for Small Eigenvalues}
+	\begin{block}{Krein Matrix (Kapitula et al, 2019)}
+	\begin{align*}
+        [K_S(z)]_{jk} &= -z \Big( 
+        \langle s_j , \calP_2(iz)s_k\rangle \\
+        &- \langle s_j , \calP_2(iz) P_{S^{\perp}} (\underbrace{P_{S^{\perp}} \calP_2(iz)|_{S^{\perp}} }_{\text{This depends on }z})^{-1} P_{S^{\perp}} \calP_2(iz) s_k \rangle \Big) \\
+        \calP_2(iz) &= -A_2 z^2 + i A_1 z + A_0
+    \end{align*}
+    \end{block}
+
+    \begin{itemize}
+    \item<1-> Idea: For small $z$, approximate $\calP_2(iz)$ by $A_0$.
+    \item<2-> $A_0$ is invertible on $S^\perp$
+        \begin{figure}
+		\begin{center}
+		\includegraphics[width=6cm]{images/A0essspec.pdf}
+		\end{center}
+		\end{figure}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Krein Matrix for Small Eigenvalues}
 	\begin{lemma}[Kapitula et al., 2019]
-	\begin{itemize}
-	\item For the quadratic $\star$-even operator polynomial
-	\[ \calP_2(\lambda) = A_2 \lambda^2 + A_1 \lambda + A_0 \]
-	suppose $A_0$ has $n$ eigenvalues near 0
-	\item Let $S$ be the $n-$dimensional space spanned by the eigenfunctions $\{s_1, \dots, s_n \}$
-	\item For sufficiently small $|\lambda|$, the Krein matrix is analytic and has the form
+	% \item For the quadratic $\star$-even operator polynomial
+	% \[ \calP_2(\lambda) = A_2 \lambda^2 + A_1 \lambda + A_0 \]
+	% suppose $A_0$ has $n$ eigenvalues near 0
+	% \item Let $S$ be the $n-$dimensional space spanned by the eigenfunctions $\{s_1, \dots, s_n \}$
+	For sufficiently small $|z|$, the Krein matrix is analytic and has the form
 	\begin{align*}
-	K_S(z) &= -z\left[ \text{diag}(\mu_1, \dots, \mu_n) - K_1 i \overline{z} - K_2 \overline{z}^2 + \mathcal{O}(|z|^3)\right] \\
+	K_S(z) &= -z\left[ \text{diag}(\nu_1, \dots, \nu_n) - K_1 i \overline{z} - K_2 \overline{z}^2 + \mathcal{O}(|z|^3)\right]
+	\end{align*}
 	% K_1(z)_{jk} &= \langle s_j, A_1 s_k\rangle \\
 	% K_2(z)_{jk} &= \langle s_j, A_2 s_k\rangle -
 	% \langle s_j, A_1 P_{S^{\perp}} (P_{S^{\perp}} A_0)|_{S^{\perp}} )^{-1} P_{S^{\perp}} A_1 s_k \rangle \Big)
-	\end{align*}
-	\item $K_1$ and $K_2$ are matrices which do not depend on $z$.
-    \end{itemize}
-
+	$K_1$ and $K_2$ are matrices which do not depend on $z$.
 	\end{lemma}
 \end{frame}
 
 \section{Spectral Stability of Multi-Pulse Solutions to Suspension Bridge Equation}
 
 \begin{frame}
-\frametitle{Polynomial Eigenvalue Problem}
-	Linearization of the suspension bridge PDE about an $n-$pulse solution $q_n$ is the quadratic $\star$-even operator polynomial
+\frametitle{Suspension Bridge PDE}
+	Linearization of the suspension bridge PDE about an $n-$pulse solution $q_n$ is the quadratic polynomial
 
     \begin{align*}
     P_2(\lambda; q_n)v &= A_2 \lambda^2 + A_1 \lambda + A_0(q_n)
@@ -360,16 +364,12 @@ Department of Mathematics and Statistics, Calvin College}
 	    \end{align*}
 
     	\item The signs of $\nu_j$ are determined by the parity of the integers $k_j$ 
-        \begin{align*}
-            \nu_j < 0 \text{ if } k_j \text{ is odd} \\
-            \nu_j > 0 \text{ if } k_j \text{ is even} 
-        \end{align*}
-	\end{itemize}
-	    \begin{figure}
+        \begin{figure}
 		\begin{center}
-		\includegraphics[width=7cm]{images/A0eigpattern.pdf}
+		\includegraphics[width=7cm]{images/A0smalleigs.pdf}
 		\end{center}
 		\end{figure}
+	\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -384,20 +384,21 @@ Department of Mathematics and Statistics, Calvin College}
 
       	We assume $d''(c) > 0$
 
-        \item For each $\nu_j < 0$ ($k_j$ odd), there is a pair of purely imaginary polynomial eigenvalues $\lambda = \pm i \beta_j$
+        \item Each $\nu_j < 0$ ($k_j$ odd) $\implies$ a pair of purely imaginary eigenvalues
        	\begin{figure}
 		\begin{center}
 		\includegraphics[width=4cm]{images/stableeigpattern.pdf}
 		\end{center}
 		\end{figure}
 
-        \item For each $\nu_j > 0$ ($k_j$ even), there is a pair of real polynomial eigenvalues $\lambda = \pm \beta_j$
+        \item Each $\nu_j > 0$ ($k_j$ even) $\implies$ a pair of real eigenvalues
 
         \begin{figure}
 		\begin{center}
 		\includegraphics[width=4cm]{images/unstableeigpattern.pdf}
 		\end{center}
 		\end{figure}
+		\item Using the HKI, there are no other potentially unstable eigenvalues.
 	\end{itemize}
 \end{frame}
 
@@ -464,6 +465,7 @@ Department of Mathematics and Statistics, Calvin College}
 \begin{frame}
 \frametitle{Future Work}
     \begin{itemize}
+      \item Explore other nonlinearities in the suspension bridge equation.
       \item Explore other applications of the Krein Matrix.
       \item Use the Krein matrix to find eigenvalues in discrete systems.
       \item Perform numerical time-stepping for the suspension bridge equation starting with perturbations of the equilibrium multi-pulses.
@@ -485,6 +487,20 @@ Department of Mathematics and Statistics, Calvin College}
       \end{thebibliography}
 \end{frame}
 
+\begin{frame}
+\frametitle{Krein Collision}
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=4.5cm]{images/spec1322_double2.eps}
+\includegraphics[width=4.5cm]{images/spec1323_double2.eps}
+\includegraphics[width=4.5cm]{images/kreineigbefore.eps}
+\includegraphics[width=4.5cm]{images/kreineigafter.eps}
+\caption{Spectrum of $P_2(\lambda)$ for stable 2-pulse, $c = 1.322$ and $c=1.323$ (top), Krein eigenvalues (bottom)}
+\end{center}
+\end{figure}
+
+\end{frame}
 
 
 \end{document}
