@@ -1,0 +1,28 @@
+1. Intro
+2. KdV5
+	a. background / applications / prior stuff
+	b. numerics
+	c. generalization
+	d. single pulse
+	e. theorems on R (existence, leading order stability)
+	f. periodic existence
+	g. periodic stability
+	h. eigenvalue location
+	k. krein bubbles
+
+b. numerics
+	x AUTO + matlab for multipulse construction
+	x explain Fourier/Chebyshev, both with large domain
+	x first four double pulses
+	x some triple pulses, with uneven
+	x eigenvalues with eig (do a bunch of these) for Hessian of energy and for PDE
+	x exponential weight
+	x eigenvalue table and decay
+
+	x timestepping (explain why cheb)
+
+	periodics (existence, double pulse bif diag, AUTO)
+	periodics (dp eigenvalues)
+
+	krein bubbles
+

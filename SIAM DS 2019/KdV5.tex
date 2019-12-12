@@ -48,7 +48,7 @@
 	Weakly nonlinear long wave approximation to capillary-gravity wave problem
 	\vspace{0.5cm}
 	\begin{itemize}
-		\item Long wave (Boussinesq) approximation
+		\item Long wave approximation
 		\begin{itemize} 
 			\item Wavelength long compared to wave depth
 		\end{itemize}
@@ -134,7 +134,7 @@
 
 \begin{frame}
 \frametitle{Multi-Pulses} 
-	\fontsize{14}{7.2}\selectfont
+	\fontsize{16}{7.2}\selectfont
     \begin{block}{Theorem [Buffoni et al. (1996); Sandstede (1997)]}
     For $c > 1/4$, multi-pulse solutions exist, which resemble copies of the primary pulse spliced together.
 
@@ -142,10 +142,10 @@
 	\begin{center}
 	\includegraphics[width=8cm]{images/multipulse.eps}
 	\end{center}
-	\end{figure}
 	\begin{align*}
 	 X_j &\approx \frac{2 \pi}{\beta} k_j + C && k_j \text{ integer}
 	\end{align*}
+	\end{figure}
 
     \end{block}
 \end{frame}
@@ -161,7 +161,7 @@
 	\end{figure}
 \end{frame}
 
-\section{Eigenvalue Problem}
+\section{Eigenvalue problem for multi-pulses}
 
 \begin{frame}
 	\frametitle{Eigenvalue Problem}
@@ -175,6 +175,11 @@
 	\begin{center}
 		$L = \partial_x^5 - \partial_x^3 + (c - 2 u^*)\partial_x - 2 u^*_x $
 	\end{center}
+	Eigenvalues of rest state
+	\begin{center}
+		\includegraphics[width=0.2\linewidth]{images/eignonhyp.eps}
+	\end{center}
+
 \end{frame}
 
 \begin{frame}
@@ -233,7 +238,8 @@
 \end{frame}
 
 \begin{frame}
-	\frametitle{Unstable Double Pulses}
+	\frametitle{Unstable Double Pulses ($k$ odd)}
+	\fontsize{16}{7.2}\selectfont
 	\begin{center}
 		\includegraphics[width=1\linewidth]{images/doubleunstableeig}
 	\end{center}
@@ -242,7 +248,8 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Neutrally Stable Double Pulses}
+\begin{frame}{Neutrally Stable Double Pulses ($k$ even)}
+	\fontsize{16}{7.2}\selectfont
 	\begin{center}
 		\includegraphics[width=1\linewidth]{images/doublestableeig}
 	\end{center}
@@ -252,6 +259,7 @@
 \end{frame}
 
 \begin{frame}{Neutrally Stable Double Pulses}
+	\fontsize{14}{7.2}\selectfont
 	\begin{center}
 		\includegraphics[width=0.5\linewidth]{images/stableeigweighted2}
 	\end{center}
@@ -263,7 +271,7 @@
 	\end{itemize}
 \end{frame}
 
-\section{Periodic Multi-Pulses}
+\section{Periodic multi-pulses}
 
 \begin{frame}
 	\frametitle{Periodic Multi-Pulses}
@@ -283,9 +291,9 @@
 
 \begin{frame}
 \frametitle{Periodic Multi-Pulses} 
-	\fontsize{16}{7.2}\selectfont
+	\fontsize{14}{7.2}\selectfont
     \begin{block}{Theorem [P.]}
-    For sufficiently large $X_j$, periodic multi-pulse solutions exist with distances $X_j$.
+    For sufficiently large $X_j$, periodic multipulse solutions exist\footnote{Some restrictions apply.}.
 
 	\begin{figure}
 	\begin{center}
@@ -297,7 +305,7 @@
 
 \begin{frame}
 \frametitle{Periodic Multi-Pulses} 
-	\fontsize{16}{7.2}\selectfont
+	\fontsize{14}{7.2}\selectfont
     \begin{block}{Theorem [P.]}
     2-periodic pulses with $X_0 \neq X_1$ bifurcate from 2-periodic pulses with $X_0 = X_1$ in a series of pitchforks.
 
@@ -333,11 +341,11 @@
 
 \begin{frame}
 \frametitle{Periodic Multi-Pulses} 
-	\fontsize{16}{7.2}\selectfont
-    \begin{block}{Theorem}
+	\fontsize{14}{7.2}\selectfont
+    \begin{block}{Theorem [P.]}
     To leading order, $\lambda$ is a PDE eigenvalue for the linearization about a periodic $n-$pulse if and only if 
     \[
-    \det\begin{pmatrix}K(\lambda) & 0 \\ 0 & A - \lambda^2  M I \end{pmatrix} + \text{``h.o.t.''} = 0
+    \det\begin{pmatrix}K(\lambda) & 0 \\ 0 & A - \lambda^2  M I \end{pmatrix} = 0
     \]
     \begin{itemize}
     	\item $K(\lambda)$ is an $n \times n$ matrix which depends only on the background state
@@ -374,9 +382,9 @@
 		     addresource=videos/Kreincollision.mp4,
 		     flashvars={
 		         source=videos/Kreincollision.mp4
-		        &autoPlay=true
+		        &autoPlay=false
 		     }
-	]{}{VPlayer.swf} 
+		]{}{VPlayer.swf} 
 	\end{center}
 \end{frame}
 
@@ -394,17 +402,18 @@
 \begin{frame}
 \frametitle{Location of Eigenvalues} 
 	\fontsize{14}{7.2}\selectfont
-    \begin{block}{Theorem}
-    To leading order, $\lambda$ is a PDE eigenvalue for the linearization about a periodic $n-$pulse if and only if 
+    \begin{block}{Theorem [P. ]}
+    $\lambda$ is a PDE eigenvalue if and only if 
     \[
     \det\begin{pmatrix}K(\lambda) & 0 \\ 0 & A - \lambda^2  M I \end{pmatrix} + \text{``h.o.t.''} = 0
     \]
-    As long as the singular points of the two blocks are not too close, the complete picture for eigenvalues near 0 is
+    If the singular points of the two blocks are not too close:
     \begin{itemize}
     	\item An eigenvalue with algebraic multiplicity 3 at 0
     	\item $n-1$ pairs of interaction eigenvalues. Each pair is either real or purely imaginary.
     	\item Discrete pairs of purely imaginary ``essential spectrum'' eigenvalues
     \end{itemize}
+    The h.o.t. decay exponentially in the pulse distances $X_j$.
     \end{block}
 \end{frame}
 
@@ -418,7 +427,7 @@
 		\includegraphics[width=4cm]{images/2pulseunstable}
 		\includegraphics[width=4cm]{images/2pulseunstableeig}
 		\end{center}
-		\caption{\textcolor{red}{Interaction} eigenvalues and \textcolor{blue}{``essential spectrum''} eigenvalues for neutrally stable and unstable periodic 2-pulse.}
+		\caption{\textcolor{red}{Interaction} eigenvalues and \textcolor{blue}{``essential spectrum''} eigenvalues for neutrally stable and unstable 2-periodic pulse.}
 		\end{figure}
 \end{frame}
 
@@ -433,7 +442,7 @@
 		\end{figure}
 \end{frame}
 
-\section{Time Stepping for 2-pulses}
+\section{Time stepping for 2-pulses}
 
 \begin{frame}
 	\frametitle{Time Stepping}
@@ -445,7 +454,7 @@
 		\includegraphics[width=5cm]{images/DPeigpattern.eps}
 		\end{center}
 		\end{figure}
-		\item Numerics suggests this is the case
+		\item Numerics strongly suggests this is the case
 		\vspace{0.5cm}
 		\item What does this imply for PDE dynamics?
 	\end{itemize}
@@ -478,7 +487,7 @@
 		     addresource=images/unstable.mp4,
 		     flashvars={
 		         source=images/unstable.mp4
-		        &autoPlay=true
+		        &autoPlay=false
 		     }
 	]{}{VPlayer.swf} 
 	\end{center}
@@ -494,7 +503,7 @@
 		     addresource=images/stable.mp4,
 		     flashvars={
 		         source=images/stable.mp4
-		        &autoPlay=true
+		        &autoPlay=false
 		     }
 	]{}{VPlayer.swf} 
 	\end{center}
@@ -517,8 +526,9 @@
 	\dot{y} &= C e^{-\alpha x} \sin \beta x
 	\end{align*}
 	\begin{center}
-	\includegraphics[width=0.65\linewidth]{images/simplephaseportrait}
+	\includegraphics[width=0.5\linewidth]{images/simplephaseportrait}
 	\end{center}
+	Harmonic oscillator with spatially-varying restoring force
 \end{frame}
 
 \begin{frame}

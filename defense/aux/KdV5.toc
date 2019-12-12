@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Background}{3}{0}{1}
+\beamer@sectionintoc {2}{Eigenvalue problem for multi-pulses}{11}{0}{2}
+\beamer@sectionintoc {3}{Periodic multi-pulses}{20}{0}{3}
+\beamer@sectionintoc {4}{Time stepping for 2-pulses}{32}{0}{4}

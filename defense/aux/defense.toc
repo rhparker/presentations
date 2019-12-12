@@ -1,0 +1,7 @@
+\beamer@sectionintoc {1}{Background}{3}{0}{1}
+\beamer@sectionintoc {2}{Fifth-order KdV equation}{17}{0}{2}
+\beamer@sectionintoc {3}{Eigenvalue problem for multi-pulses}{30}{0}{3}
+\beamer@sectionintoc {4}{Periodic multi-pulses}{40}{0}{4}
+\beamer@sectionintoc {5}{Time stepping for 2-pulses}{55}{0}{5}
+\beamer@sectionintoc {6}{Multi-pulses in other systems}{62}{0}{6}
+\beamer@sectionintoc {7}{Future directions}{68}{0}{7}
