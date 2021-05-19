@@ -19,6 +19,7 @@
 \author[R. Parker]{Ross Parker, Bj\"{o}rn Sandstede}
 \institute{Brown University}
 \date{19 December, 2019}
+\titlegraphic{\includegraphics[width=0.55\textwidth]{images/xkcdchaos.png}}
 
 \AtBeginSection[]
 {
@@ -40,8 +41,8 @@
 \section{Background}
 
 \begin{frame}
-	\fontsize{18}{7.2}\selectfont
-	\frametitle{ Solitary Waves }   
+	\frametitle{ Solitary Waves } 
+	\fontsize{16}{7.2}\selectfont
 	\begin{itemize}
 		\item Localized disturbances 
 		\vspace{0.5cm}
@@ -49,13 +50,33 @@
 		\vspace{0.5cm}
 		\item Propagate at a constant velocity
 	\end{itemize}
+	\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.5\textwidth]{images/hydrosoliton.jpg}
+	\end{figure}
 \end{frame}
 
 \begin{frame}
-	\fontsize{18}{7.2}\selectfont
+	\frametitle{Solitary waves in water}
+	\fontsize{16}{7.2}\selectfont
+	\begin{center}
+		\includemedia[
+		     width=8cm,height=6cm,
+		     activate=pageopen,
+		     addresource=videos/watersoliton.mp4,
+		     flashvars={
+		         source=videos/watersoliton.mp4
+		        &autoPlay=false
+		     }
+		]{}{VPlayer.swf} 
+	\end{center}
+\end{frame}
+
+\begin{frame}
 	\frametitle{ Great solitary wave }   
+	\fontsize{16}{7.2}\selectfont
 	\begin{itemize}
-		\item First recorded observation by John Scott Russell (1834) on the Union Canal in Scotland.
+		\item First published observation by John Scott Russell (1834) on the Union Canal in Scotland.
 		\vspace{0.5cm}
 		\item Occurred when a boat on the canal stopped rapidly.
 		\vspace{0.5cm}
@@ -64,45 +85,50 @@
 \end{frame}
 
 \begin{frame}
-\fontsize{18}{7.2}\selectfont
+	\frametitle{ Great solitary wave }   
+	\fontsize{16}{7.2}\selectfont
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.6\textwidth]{images/horsebefore.jpg}
+\includegraphics[width=0.5\textwidth]{images/horsebefore.jpg}
 \end{figure}
 ``I followed it on horseback, and overtook it still rolling on at a rate of some eight or nine miles an hour.''
 \end{frame}
 
 \begin{frame}
-\fontsize{18}{7.2}\selectfont
+	\frametitle{ Great solitary wave }   
+	\fontsize{16}{7.2}\selectfont
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.6\textwidth]{images/horsebefore.jpg}
+\includegraphics[width=0.5\textwidth]{images/horsekilt.jpg}
 \end{figure}
 ``It continued its course along the channel apparently without change of form or diminution of speed.''
 \end{frame}
 
 \begin{frame}
-\fontsize{18}{7.2}\selectfont
+	\frametitle{ Great solitary wave }   
+	\fontsize{16}{7.2}\selectfont
 Russell could create solitary waves in the laboratory
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.6\textwidth]{images/russellwaves.jpg}
+\includegraphics[width=0.5\textwidth]{images/russellwaves.jpg}
 \end{figure}
 but existing theory could not explain them.
 \end{frame}
 
 \begin{frame}
-\fontsize{18}{7.2}\selectfont
+	\frametitle{ Great solitary wave }   
+	\fontsize{16}{7.2}\selectfont
 Solitary wave recreated on the Scott Russell Aqueduct
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{images/watersoliton.png}
+\includegraphics[width=0.7\textwidth]{images/watersoliton.png}
 \end{figure}
 Department of Mathematics, Heriot-Watt University (1995)
 \end{frame}
 
 \begin{frame}
 \frametitle{Diederik Korteweg and Gustav de Vries}
+\fontsize{16}{7.2}\selectfont
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.6\textwidth]{images/KdVtitle2.png}
@@ -113,6 +139,22 @@ Department of Mathematics, Heriot-Watt University (1995)
 \left( \frac{1}{2} \eta^2 + \frac{2}{3} \alpha \eta + \frac{1}{3} \sigma \frac{\partial^2 \eta}{\partial x^2}\right)}{\partial x}
 \]
 Philosophical Magazine, 1895.
+\end{frame}
+
+\begin{frame}
+\frametitle{Application of solitary waves}
+\fontsize{16}{7.2}\selectfont
+\begin{itemize}
+	\item Fiber optics
+	\vspace{0.25cm}
+	\item Action potentials in nerve axons
+	\vspace{0.25cm}
+	\item Molecular systems
+	\vspace{0.25cm}
+	\item Bose-Einstein condensates
+	\vspace{0.25cm}
+	\item Ferromagnetics
+\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -132,11 +174,15 @@ u_t + \underbrace{u_{xxx}}_{\text{Dispersion}} - \underbrace{6 u u_x}_{\text{Adv
 \begin{frame}
 \frametitle{KdV: spatial dynamics}
 \fontsize{16}{7.2}\selectfont
-Solitary waves with speed $c$ satisfy
+Solitary waves traveling with speed $c$ satisfy
 \[
 u_{xx} - c u - 3 u^2 = 0
 \]
-Spatial dynamics: write as 1st order ODE
+Spatial dynamics
+\begin{itemize}
+	\item Write as 1st order ODE in spatial variable $x$ 
+	\item Take $v = u_x$
+\end{itemize}
 \[
 \begin{pmatrix}u \\ v
 \end{pmatrix}'
@@ -150,11 +196,25 @@ v \\ c u + 3 u^3
 \frametitle{KdV: spatial dynamics}
 \fontsize{16}{7.2}\selectfont
 \begin{figure}[H]
-\includegraphics[width=0.6\textwidth]{images/kdv3portrait1.eps}
+\includegraphics[width=0.55\textwidth]{images/kdv3portrait1.eps}
 \end{figure}
 \begin{itemize}
 \item Saddle node at $(0,0)$: eigenvalues $\pm \sqrt{c}$.
+\vspace{0.25ex}
 \item Linear center at $(c, 0)$: eigenvalues $\pm \sqrt{c} i$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{KdV: spatial dynamics}
+\fontsize{16}{7.2}\selectfont
+\begin{figure}[H]
+\includegraphics[width=0.55\textwidth]{images/kdvportrait2.eps}
+\end{figure}
+\begin{itemize}
+\item Homoclinic orbit connects unstable and stable manifolds of saddle.
+\vspace{0.25ex}
+\item Follows from conservation of energy.
 \end{itemize}
 \end{frame}
 
@@ -197,7 +257,40 @@ v \\ c u + 3 u^3
 \end{frame}
 
 \begin{frame}
-\frametitle{KdV: multi-pulses}
+\frametitle{Multi-pulses}
+\fontsize{16}{7.2}\selectfont
+\begin{figure}[H]
+\begin{center}
+\begin{tabular}{cc}
+\includegraphics[width=0.4\textwidth]{images/KdVdouble1.eps} & \includegraphics[width=0.4\textwidth]{images/KdVtriple01.eps}
+\end{tabular}
+\end{center}
+\end{figure}
+\begin{itemize}
+\item Solitary waves consisting of multiple peaks.
+\vspace{0.25ex}
+\item Resembles multiple consecutive copies of a primary solitary wave.
+\vspace{0.25ex}
+\item Entire structure travels as a unit with constant velocity.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Multi-pulses}
+\fontsize{16}{7.2}\selectfont
+\begin{figure}[H]
+\begin{center}
+\begin{tabular}{cc}
+\includegraphics[width=0.35\textwidth]{images/dromedary2} & \includegraphics[width=0.35\textwidth]{images/bactrian2} \\
+Dromedary & Bactrian camel
+\end{tabular}
+\end{center}
+\end{figure}
+Applications to neuroscience and nonlinear optics.
+\end{frame}
+
+\begin{frame}
+\frametitle{Multi-pulses}
 \fontsize{16}{7.2}\selectfont
 
 \begin{figure}[H]
@@ -206,9 +299,12 @@ v \\ c u + 3 u^3
 \end{center}
 \end{figure}
 
-Multi-pulses are multi-loop homoclinic orbits
+Spatial dynamics of multi-pulses
 \begin{itemize}
+	\item Multi-loop homoclinic orbits
+	\vspace{0.25cm}
 	\item Cannot exist in KdV since trajectories in the plane cannot cross
+	\vspace{0.25cm}
 	\item Require spatial dynamics to evolve in a higher dimensional phase space 
 \end{itemize}
 
@@ -277,10 +373,10 @@ Multi-pulses are multi-loop homoclinic orbits
 \end{frame}
 
 \begin{frame}
-	\frametitle{Homoclinic orbits}
+	\frametitle{Solitary waves}
 	\fontsize{16}{7.2}\selectfont
 
-	Symmetric homoclinic orbits exist for $c > 0$ \\ \footnotesize [Groves (1998), Chugunova and Pelinovsky (2007)]
+	Symmetric solitary wave solutions exist for $c > 0$ \\ \footnotesize [Groves (1998), Chugunova and Pelinovsky (2007)]
 
 	\begin{figure}
    		\includegraphics[width=0.48\textwidth]{images/exactsol}
@@ -299,7 +395,7 @@ Multi-pulses are multi-loop homoclinic orbits
 	\includegraphics[width=8cm]{images/multipulse.eps}
 	\end{center}
 	\begin{align*}
-	 X_j &\approx \frac{2 \pi}{\beta} k_j + C && k_j \text{ integer}
+	 X_j &\approx \frac{\pi}{\beta} k_j + C && k_j \text{ integer}
 	\end{align*}
 	\end{figure}
 
@@ -336,7 +432,7 @@ Multi-pulses are multi-loop homoclinic orbits
 	\fontsize{16}{7.2}\selectfont
 	\begin{figure}
 	\begin{center}
-	\includegraphics[width=0.6\linewidth]{images/WsWu}
+	\includegraphics[width=0.6\linewidth]{images/WsWuL.eps}
 	\end{center}
 	\end{figure}
 	Double pulse must ``jump'' from stable manifold at $x = L$ to unstable manifold at $ = -L$.
@@ -345,7 +441,7 @@ Multi-pulses are multi-loop homoclinic orbits
 \begin{frame}
 	\frametitle{Construction of double pulses}
 	\fontsize{16}{7.2}\selectfont
-	For $c > 0$, eigenvalues of rest state are $\pm \alpha \pm \beta i$
+	For $c > 1/4$, eigenvalues of rest state are $\pm \alpha \pm \beta i$
 	\begin{figure}
 	\begin{center}
 	\includegraphics[width=0.3\linewidth]{images/eigbifurcationdouble.pdf}
@@ -357,24 +453,13 @@ Multi-pulses are multi-loop homoclinic orbits
 \begin{frame}
 	\frametitle{Construction of double pulses}
 	\fontsize{16}{7.2}\selectfont
+	Geometry needed to ``jump'' from stable to unstable manifold: $Q(L) \perp \Psi(-L)$.
 	\begin{figure}
 	\begin{center}
-	\includegraphics[width=0.45\linewidth]{images/manifoldslineup}
+	\includegraphics[width=0.45\linewidth]{images/manifoldslineup.eps}
 	\end{center}
 	\end{figure}
-	Specific geometry needed to ``jump'' from stable to unstable manifold: $Q'(L)$ parallel to $\Psi(-L)$.
-\end{frame}
-
-\begin{frame}
-	\frametitle{Construction of double pulses}
-	\fontsize{16}{7.2}\selectfont
-	$Q'(x)$ and $\Psi(-x)$ rotate in opposite directions.
-	\begin{figure}
-	\begin{center}
-	\includegraphics[width=0.6\linewidth]{images/psiqoneperiod} 
-	\end{center}
-	\end{figure}
-	Proper alignment for ``jump'' occurs every quarter period.
+	This occurs every quarter period.
 \end{frame}
 
 \begin{frame}
@@ -392,7 +477,7 @@ Multi-pulses are multi-loop homoclinic orbits
 \begin{frame}
 	\frametitle{Eigenvalue problem}
 	\fontsize{16}{7.2}\selectfont
-	Linearization of the PDE about an equilibrium solution $u^*(x)$
+	Linearization of the PDE about an equilibrium solution $u^*(x)$ is operator $L$ considered on $L^2(\mathbb{R})$ with domain $H^5(\mathbb{R})$.
 
 	\begin{center}
 		$(L - \lambda I )v = 0$
@@ -412,7 +497,7 @@ Multi-pulses are multi-loop homoclinic orbits
 	\fontsize{16}{7.2}\selectfont
 	Definitions:
 	\begin{itemize}
-		\item Resolvent set: $L - \lambda I$ is invertible with bounded inverse
+		\item Resolvent set: $L - \lambda I$ is invertible with bounded inverse on $L^2(\mathbb{R})$
 		\vspace{0.5cm}
 		\item Spectrum: complement of resolvent set
 	\end{itemize}
@@ -421,7 +506,7 @@ Multi-pulses are multi-loop homoclinic orbits
 	\begin{itemize}
 		\item Essential spectrum: $L - \lambda I$ is not Fredholm
 		\vspace{0.5cm}
-		\item Point spectrum (eigenvalues): kernel of $L - \lambda I$ contains an eigenfunction 
+		\item Point spectrum (eigenvalues): kernel of $L - \lambda I$ contains an eigenfunction which lies in the underlying space.
 	\end{itemize}
 \end{frame}
 
@@ -435,8 +520,10 @@ Multi-pulses are multi-loop homoclinic orbits
 			\end{center}
 
 		\item Depends only on background state.
-		\vspace{0.5cm}
+		\vspace{0.25cm}
 		\item Independent of solution we are linearizing about.
+		\vspace{0.25cm}
+		\item Same for primary pulse and multi-pulses
 	\end{itemize}
 \end{frame}
 
@@ -449,24 +536,33 @@ Multi-pulses are multi-loop homoclinic orbits
 			\includegraphics[width=0.3\linewidth]{images/eigsingle.eps}
 		\end{center}
 		\item From translation invariance
-		\vspace{0.5cm}
-		\item Eigenfunctions are $\partial_x u^*$ and $\partial_c u^*$
+		\vspace{0.25cm}
+		\item Eigenfunction $\partial_x u^*$
+		\vspace{0.25cm}
+		\item Generalized eigenfunction $\partial_c u^*$
 	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Spectrum of primary pulse}
+		\begin{center}
+			\includegraphics[width=0.4\linewidth]{images/eigsinglepulse.eps}
+		\end{center}
 \end{frame}
 
 \begin{frame}
 	\frametitle{Spectrum of multi-pulses}
 	\fontsize{16}{7.2}\selectfont
 	\begin{itemize}
-	\item Spectrum of primary pulse
-		\begin{center}
-			\includegraphics[width=0.2\linewidth]{images/eigsinglepulse.eps}
-		\end{center}
-	\item For multi-pulses, additional eigenvalues near 0 from interaction between neighboring pulses 
-	\fontsize{16}{7.2}\selectfont
+	\item Nonlinear interactions between neighboring pulses captured by eigenvalues near 0
+	\vspace{0.25cm} 
+	\item These eigenvalues suggest what happens when a multi-pulse is perturbed
+	\vspace{0.25cm} 
 	\item Interaction eigenvalues must come in quartets since Hamiltonian system
+	\vspace{0.25cm}
+	\item Expect to see one of these eigenvalue patterns
 		\begin{center}
-			\includegraphics[width=0.8\linewidth]{images/eigdouble2}
+			\includegraphics[width=0.6\linewidth]{images/eigdouble2}
 		\end{center}
 	\end{itemize}
 \end{frame}
@@ -493,12 +589,20 @@ Multi-pulses are multi-loop homoclinic orbits
 \begin{frame}{Neutrally stable double pulses ($k$ even)}
 	\fontsize{16}{7.2}\selectfont
 	\begin{center}
-		\includegraphics[width=1\linewidth]{images/doublestableeig}
+		\includegraphics[width=1\linewidth]{images/doublestableeig2}
 	\end{center}
 	\begin{itemize}
 	\item Where are the interaction eigenvalues?
 	\item If they are embedded in the essential spectrum, how would you locate them?
 	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\fontsize{16}{7.2}\selectfont
+	\begin{center}
+		\includegraphics[width=1\linewidth]{images/tonystark}
+	\end{center}
+	``Give me the eigenvalue of the particle factoring in spectral decomp.''
 \end{frame}
 
 \begin{frame}{Neutrally stable double pulses}
@@ -513,21 +617,41 @@ Multi-pulses are multi-loop homoclinic orbits
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Summary}
+	\fontsize{14}{7.2}\selectfont
+	\begin{figure}[H]
+	\begin{tabular}{cc}
+	\includegraphics[width=5cm]{images/doubleodd.eps} &
+	\includegraphics[width=2cm]{images/unstablepattern.eps} \\
+	\includegraphics[width=5cm]{images/doubleeven.eps} &
+	\includegraphics[width=4cm]{images/stablepattern.eps} 
+	\end{tabular}
+	\end{figure}
+\end{frame}
+
+\begin{frame}
+	\begin{center}
+		\includegraphics[width=0.5\linewidth]{images/expandingbrain}
+	\end{center}
+\end{frame}
+
+
 \section{Periodic multi-pulses}
 
 \begin{frame}
 	\frametitle{Periodic multi-pulses}
 	\fontsize{16}{7.2}\selectfont
+	Look at multi-pulses on a periodic domain $[-X,X]$.
 	\begin{itemize}
+		\item Eigenvalue problem is now posed on $L^2_{\text{per}}[-X, X]$ with domain $H^5_{\text{per}}[-X, X]$
+		\vspace{0.25cm}
 		\item Essential spectrum becomes discrete
-		\vspace{0.5cm}
+		\vspace{0.25cm}
 		\item We don't have to look for embedded eigenvalues
-		\vspace{0.5cm}
+		\vspace{0.25cm}
 		\item Each pulse interacts with its two neighbors
-		\vspace{0.5cm}
+		\vspace{0.25cm}
 		\item This interaction constrains the allowable pulse distances
-		\vspace{0.5cm}
-		\item Essential spectrum eigenvalues and interaction eigenvalues can collide
 	\end{itemize}
 \end{frame}
 
@@ -624,7 +748,11 @@ K(\lambda) + C_1 & \lambda K_2(\lambda) - \lambda^2 \tilde{M}^c I + D_1 \\
     \[
     \det\begin{pmatrix}K(\lambda) & 0 \\ 0 & A - \lambda^2  M I \end{pmatrix} + \text{``h.o.t.''} = 0
     \]
-    The higher order terms decay exponentially in the pulse distances $X_j$.
+    \begin{itemize}
+    	\item $K(\lambda)$ is an $n \times n$ matrix which depends only on the background state
+    	\item $A$ is an $n \times n$ matrix which depends on the geometry of the $n$-pulse
+    	\item The higher order terms decay exponentially in the pulse distances $X_j$.
+    \end{itemize}
     \end{block}
 \end{frame}
 
@@ -735,7 +863,19 @@ K(\lambda) + C_1 & \lambda K_2(\lambda) - \lambda^2 \tilde{M}^c I + D_1 \\
 		\vspace{0.25cm}
 		\item A proof using this method is not possible without characterizing the higher order terms.
 	\end{itemize}
+\end{frame}
 
+\begin{frame}
+	\begin{figure}
+	\begin{center}
+	\begin{tabular}{cc}
+	\includegraphics[width=0.4\textwidth]{images/babyelephant1.jpg} & 
+	\includegraphics[width=0.4\textwidth]{images/babyelephant2.jpg} \\
+	\includegraphics[width=0.4\textwidth]{images/babyelephant3.jpg} & 
+	\includegraphics[width=0.4\textwidth]{images/babyelephant4.jpg} \\
+	\end{tabular}
+	\end{center}
+	\end{figure}
 \end{frame}
 
 \section{Time stepping for 2-pulses}
@@ -899,7 +1039,14 @@ Interaction eigenvalue pattern determined by geometry of multi-pulse.
 \end{figure}
 \end{frame}
 
-\section{Future directions}
+\section{Conclusions}
+
+\begin{frame}
+	\frametitle{Summary}
+	\begin{center}
+		\includegraphics[width=1\linewidth]{images/dinotemplate}
+	\end{center}
+\end{frame}
 
 \begin{frame}
 	\frametitle{Future directions}
@@ -913,6 +1060,34 @@ Interaction eigenvalue pattern determined by geometry of multi-pulse.
 		\vspace{0.5cm}
 		\item Are any of the neutrally stable multi-pulses in KdV5, Chen-McKenna, or DNLS nonlinearly stable?
 	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Acknowledgments}
+	\fontsize{14}{7.2}\selectfont
+	\begin{itemize}
+\item My advisor Bj\"{o}rn Sandstede, and Ryan Goh and John Mallet-Paret, for serving on my thesis committee
+\vspace{0.25cm}
+\item My APMA colleagues, especially \#Bjornlings
+\vspace{0.25cm}
+\item Everyone I have taught at Brown, especially Katie Wu and the first-year APMA cohorts
+\vspace{0.25cm}
+\item Everyone who helped keep me sane through yoga, martial arts, and music
+\vspace{0.25cm}
+\item The Rhode Island Sacred Harp and Royal Scottish Country Dance Society communities
+\vspace{0.25cm}
+\item Laura DeCesare \#mischiefmanaged
+\vspace{0.25cm}
+\item Sarah Stefanski \#allinclusive
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Dedication}
+	\fontsize{16}{7.2}\selectfont
+	\begin{center}
+	In memory of John Loustau (d. 7 September, 2019). Professor of Mathematics at CUNY Hunter College. New York, NY.
+	\end{center}
 \end{frame}
 
 \begin{frame}
